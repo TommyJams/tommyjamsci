@@ -1,0 +1,185 @@
+
+	em {
+		color: #FFF;
+		margin-bottom: 10px;
+		display: inline-block;
+		width: auto;
+		font-weight: 300;
+		font-size: 12px;
+	}
+
+	#blanket {
+	}
+
+	/*#popUpDiv {
+		position:absolute;
+		background-color:#eeeeee;
+		width:200px;
+		height:400px;
+		z-index: 9002; =ooveeerrrr nine thoussaaaannnd
+	}*/
+
+    #profil {
+        position:absolute;
+        background-color:#ffcc00;                color: #FFF;
+        width:450px;
+        height:300px;                top:50%;                left: 50%;        margin-top: -150px;                margin-left: -225px;
+        z-index: 9002; /*ooveeerrrr nine thoussaaaannnd*/
+	}
+
+    #messageBox {
+		position:absolute;
+        background-color:#ffcc00;
+		width:400px;
+        height:auto;
+		top:50%;
+		left:50%;
+        margin-top: -100px;
+		margin-left: -200px;
+        z-index: 9002; /*ooveeerrrr nine thoussaaaannnd*/        
+	}
+
+		#msgBoxClose {
+			display:inline-block;
+			height: 20px;
+			width: 20px;
+			position: absolute;
+			right:0;
+			top:0;
+			margin-top:5px;
+			margin-right: 5px;
+			background-color: #000;
+			background-image: url('../images/icons/icon_close.png');
+			background-position: 0px 0px;
+			background-repeat: no-repeat;
+		}
+		
+			#msgBoxClose:hover {
+				background-position: 0px -20px;
+			}
+
+		#msgBoxTitle {
+			color: #000;
+		}
+
+		#msgBoxDetails {
+			padding: 20px;
+			color: #000;
+		}
+
+    #launchContainer {
+		width: 100%;
+        display: block;    
+	}
+
+	/* ---------- Form Style ---------- */
+	form.cleanForm p { margin-bottom: 5px; }
+
+	form.cleanForm div a:hover {
+			color: #3d3e41;
+	}
+
+	input[type="text"], input[type="password"], input[type="email"], input[type="tel"] {
+		color: #000;
+		font-family: Arial;
+		font-size: 14px;
+		/*	padding: 0 15px;
+		border: 1px solid #d5d9de;
+		outline: none;*/
+		height: 18px;
+		width: 250px;
+	}
+ 
+    #select{
+        color: #000;
+        font-size: 15px;
+        padding: 0 0;
+        outline: none;
+        height: 20px;
+        width: 270px;
+    }
+
+    input[type="submit"],#addnew {
+		background: #ffcc00;
+		color: #000;
+        text-transform: uppercase;
+        font-family: 'Dosis', sans-serif;
+        font-size: 18px;
+        border: 0px;
+        cursor: pointer;
+    }
+
+	input[type="submit"]:hover,#addnew:hover{
+		color: #FFF; 
+	}
+
+	#uploadTable input[type="submit"] {
+		background: #000;
+		color: #FFF;
+        text-transform: uppercase;
+        font-family: 'Dosis', sans-serif;
+        font-size: 18px;
+        border: 0px;
+        cursor: pointer;
+	}
+	
+	#uploadTable input[type="submit"]:hover {
+		color:#ffcc00;
+	}
+
+    .cleanForm p label {        font-family: 'Dosis',serif;                font-size: 15px;        display: block;        float: left;        width: 120px;        text-align: right;        margin-right: 5px;    }
+	.cleanForm p em {
+		font-size:12px;
+		color:#FFF;
+		margin-bottom: 10px;
+        margin-top: 5px;
+		margin-left: 120px;
+        display: inline-block;
+        font-weight: 300;
+		width: 200px;
+	}
+	.cleanForm .requiredField {
+		font-size: 14px;
+		color: #ff0000;
+	}
+
+	div.formExtra,  input[type="checkbox"] { margin-left: 145px; }
+	div.formExtra {
+	border-top: 1px solid #eeeded;
+	margin-top: 10px;
+	padding-top: 10px;
+	}
+
+	/* ---------- Sign Up ---------- */
+	div#signUp { display: block; height:100%; background: #000;}
+
+	#signUp .cleanForm p label { width: 100px; }
+	#signUp .cleanForm p em { margin-left: 105px; }
+	#signUp .distanceLeft input[type="checkbox"],
+	#signUp .formExtra { margin-left: 165px; }
+	#signUp .cleanForm input.error {
+		background: url("../img/validationError.png") 245px center no-repeat;
+		border: 1px solid #f37f69;
+	  
+		-moz-box-shadow: 0 0 0 5px #f6cec7, inset 0 0 5px 5px #faf9f9;
+		-webkit-box-shadow: 0 0 0 5px #f6cec7, inset 0 0 5px 5px #faf9f9;
+		box-shadow: 0 0 0 5px #f6cec7, inset 0 0 5px 5px #faf9f9;
+	}
+	div#signUp form.cleanForm input.error + em { color: red; }
+
+	/* ---------- Inline Form Validation Styles ---------- */
+	/*div#signUp form.cleanForm input.valid {
+		background: url("../img/validationOk.png") 245px center no-repeat;
+	}*/
+
+#frameprofessional,#framecontact,#frameabout,#framesocial {display:none; background:#000; height:auto; max-height: 78%; overflow-y:auto; padding-top:20px;}
+#framecontact{display:block;}
+#framemenu{width:100%; height:33px; background: #ffcc00; margin-bottom:5px;}
+#framemenu a{ width:auto; height: auto; display:inline-block; font-size:20px; text-align:center; background: #ffcc00; margin-top:1px; text-decoration: none;}
+#framemenu a:hover{ background: #000; }
+form fieldset{border:none; margin: 0 0;}
+#details,#venue { width:45%; padding:10px; }
+#details input[type="text"],#venue input[type="text"],#details #select{width:200px;}
+/* ---------- Inline Form Validation Styles ---------- */
+#venue{ position:relative; }
+.dibsList a{    text-align: center;    padding: 2px 2px;}

@@ -1,0 +1,113 @@
+@charset "utf-8";
+/* CSS Document */
+
+* { margin: 0; padding: 0; }
+
+html {  font-family: â€œHelvetica Neueâ€, Arial, Helvetica, sans-serif; }
+body { font-size: 14px; font-family: Arial; }
+
+#lefty #content { display: block; width: 100%; height: 100%; margin: 0 auto; }
+#lefty #left { display: block; float: left; overflow: hidden; }
+#lefty img { border: 0;}
+/*
+:::::::unused:::::
+#lefty .contact {width:300px;height:250px; border:#999 solid 1px; border-shadow:5px; border-radius:4px; }
+*/
+
+/*#lefty a { color: #FFF; text-decoration: none; display:block; height: 100%; width:100%;}*/
+	.highlightRef { color: #FFF; background: #000; text-decoration: none; display:inline-block; height: auto; width: auto; }
+	.highlightRef:hover{ background: #FFCC00; }
+	.whiteHoverRef { color: #FFF; background: #000; text-decoration: none; display:inline-block; height: auto; width: auto; font-family: 'Dosis', sans-serif; font-size: 18px; border: 0px; cursor: pointer;}
+	.whiteHoverRef:hover{ color: #000; background: #FFF;}
+	#lefty .greenRef { color: #000; background: #B4F62F; text-decoration: none; display:inline-block; height: auto; width: auto; text-transform: uppercase; font-family: 'Dosis', sans-serif; font-size: 18px; border: 0px; cursor: pointer;}
+	#lefty .greenRef:hover{ color: #FFF; }
+	#lefty .redRef { color: #000; background: #FF3C35; text-decoration: none; display:inline-block; height: auto; width: auto; text-transform: uppercase; font-family: 'Dosis', sans-serif; font-size: 18px; border: 0px; cursor: pointer;}
+	#lefty .redRef:hover{ color: #FFF; }
+	#lefty .yellowRef { color: #000; background: #FFCC00; text-decoration: none; display:inline-block; height: auto; width: auto; text-transform: uppercase; font-family: 'Dosis', sans-serif; font-size: 18px; border: 0px; cursor: pointer;}
+	#lefty .yellowRef:hover{ color: #FFF; }
+
+/*#lefty a:hover { text-decoration: underline; }*/
+
+#lefty ul { line-height: 120%; }
+/* @group navigation */
+/*#lefty nav { width: auto; background: #eee; height: 45px; border-bottom: 1px solid #dadada; margin-bottom: 30px; }
+
+#lefty ul#n { width: 850px; margin: 0 auto; display: block; list-style: none; }
+#lefty ul#n li { float: left; line-height: 45px; border: 3px solid #eee; border-top: 0px; border-bottom: 0px; }
+#lefty ul#n li a { display: block; padding: 0 11px; color: #969696; font-size: 15px; font-weight: bold; text-shadow: 0px 1px 1px #fff; }
+
+#lefty ul#n li.sel { background: #b4e127; border: 3px solid #c1ff00; border-top: 0px; border-bottom: 0px; }
+#lefty ul#n li.sel a { color: #fff; text-shadow: 0px 1px 2px #88b618; }*/
+
+/* @group left */
+#lefty #userStats { display: block; height: 30%;}
+
+#lefty #userStats .pic { float: left; width:20%; height: 100%; display: block; margin-right: 2%; }
+	.userStatsPic { padding: 2%; max-width: 94%; max-height: 94%; margin: 0px auto; background: #000; } /*need to set 94 since there are some rounding errors with percentage padding*/
+
+#lefty #userStats .data { float: left; display: block; position: relative; width: 78%; height: 100%; background: #ffcc00; overflow-y:auto; }
+	.data h1 { padding: 7px 10px;}
+#lefty #userStats .data #userName { margin: 10px 10px; display:inline-block; background:#000;}
+	#lefty #userStats .data #gigHostName a { padding: 5px; display:inline-block; background:#000; width: auto; height: auto; }
+	#lefty #userStats .data #gigHostName a:hover { background:#FFF; color:#000;}
+
+/*
+unused???
+#lefty #userStats .data h3 { color: #666; line-height: 0.9em; margin-bottom: 5px; }
+#lefty #userStats .data h4 { font-size: 1.2em; line-height: 1.3em; }
+#lefty #userStats .data #userName h2{ width: auto; }
+
+#lefty #userStats .data .sep { clear: both; margin-top: 40px; width: 320px; height: 1px; border-bottom: 1px solid #ccc; margin-bottom: 0; }
+#lefty #userStats .data ul.numbers { list-style: none; width: 320px; padding-top: 7px; margin-top: 0; border-top: 1px solid #fff; color: #676767; }
+#lefty #userStats .data ul.numbers li { width: 95px; float: left; display: block; padding-left: 8px; height: 50px; border-right: 1px dotted #bbb; text-transform: uppercase; }
+#lefty #userStats .data ul.numbers li strong { color: #434343; display: block; font-size: 3.4em; line-height: 1.1em; font-weight: bold; }
+#lefty #headAbout h1{ color: #FFF; font-size: 2.0em; font-family: 'Dosis';}*/
+
+#lefty #userDetails, #lefty #left .about { display:block; height: 66%; width:100%; }
+	.about p{ color: #FFF; padding: 5px; font-family: Arial; font-size: 14px; }
+
+#lefty #left .gcontent { display: block; height: 100%}
+	#left td { color: #FFF;}
+#lefty #left .gcontent .boxy { height: 88%; background: #000; }
+#lefty .gcontent .boxy .giglist { height:100%; overflow-y:auto; display: block; }
+#lefty .gcontent .boxy .gig { height: auto; padding: 5px; }
+/*===not being used in profile.php=== #lefty .gcontent .boxy .gig img { border: 1px solid #ccc; float: left; padding: 2px; background: #fff; margin-right: 4px; }*/
+#lefty .gcontent .boxy .gig .gigs { position: relative; font-family: Arial; font-size:14px; }
+#lefty #pgig{height: auto; overflow:hidden; display: block; position:relative; top:2px; }
+	#pgig table{width: 100%; text-align:center; padding: 0px 2px;}
+	#pgig table a{padding: 2px;}
+
+#lefty .socialInfo { position: absolute; top: 0px; left: 35%; width: 30%; }
+	#lefty .userType{ background:#000; display:inline-block; margin: 10px;}
+	#lefty .userGenre{ width:100%;}
+	#lefty .socialMediaLinks { position: absolute; width: 100%; height: 30px; margin: 10px;}
+	#lefty .socialMediaLinks a { float:left; width:auto; height: auto; padding: 2px;}
+	#lefty .socialMediaLinks a:hover { padding: 2px; background: #000;}
+
+/*
+#lefty #left .gcontent .head { height: 10%; background: #000; display: inline-block;}
+#lefty #left .gcontent .head h1 { color: #FFF; font-weight: bold; font-size: 1.4em; }
+*/
+
+/*My Gigs Container*/
+#lefty .gigsTableItemContainer a{    margin: 5px;    padding: 2px;}
+#lefty .dibStatusRef {    font-family: 'Dosis', sans-serif;    font-size: 18px;    text-transform: uppercase;    margin: 5px;    padding: 2px;}
+#lefty #dibStatusButton {    background: #000;    color: #FFF;    display: inline-block;    height: auto;    margin: 5px;    padding: 2px;    text-decoration: none;    width: auto;    font-family: 'Dosis', sans-serif;    font-size: 18px;    text-transform: uppercase;}
+#lefty #dibStatusButton:hover{    background: #FFF;    color: #000;	text-decoration: none;}
+#lefty #gigStatus a{     display: inline-block;    height: auto;    width:auto;    padding: 7px;    text-decoration: none;  }
+#lefty .gcontent .boxy { font-size: 12px;}
+
+/** @group clearfix **/
+#lefty .clearfix:after { content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
+#lefty .clearfix { display: inline-block; } 
+
+/* @group right
+#lefty #right { display: block; width: 240px; float: left; overflow: hidden; }
+#lefty #right .gcontent { display: block; margin-bottom: 20px; }
+#lefty #right .gcontent .head { background: #589fc6; border: 1px solid #3e82a7; padding-left: 8px; }
+#lefty #right .gcontent .head h1 { color: #fafcfd; font-weight: bold; font-size: 1.4em; }
+#lefty #right .gcontent .boxy { border-radius: 0px 0px 5px 5px; border: 1px solid #ccc; border-top: 0px; padding: 10px 8px; background: #f9f9f9; }
+#lefty #right .gcontent .boxy .giglist { height:220px; overflow-y:scroll; display: block; margin-bottom: 25px; }
+#lefty #right .gcontent .boxy .gig { border-bottom: 1px solid #ccc; float: left; height: 30px; padding: 5px 5px 5px 4px; width: 200px; }
+#lefty #right .gcontent .boxy .gig img { border: 1px solid #ccc; float: left; padding: 2px; background: #fff; margin-right: 4px; }
+#lefty #right.gcontent .boxy .gig .gigs { position: relative; top: 3px; font-size: 1.1em; line-height:0.5em; }*/

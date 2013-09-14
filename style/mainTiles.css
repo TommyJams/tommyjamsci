@@ -1,0 +1,62 @@
+*{ padding:0px; margin:0px; }
+
+.boxgrid{ 
+	width: 28%;
+	float:left;
+	height: 100%;
+	/*background:#000; */
+	overflow: hidden; 
+	position: relative; 
+	margin:0 4%;
+	/*border: solid 5px #000;*/
+}/*
+	.boxgrid img{ 
+		position: absolute; 
+		top: 0; 
+		left: 0; 
+		border: 0; 
+	}
+	.boxgrid p{ 
+		padding: 0 10px; 
+		color:#afafaf; 
+		font-weight:bold; 
+		font:10pt "Lucida Grande", Arial, sans-serif; 
+	}
+	*/
+.titleSlider{
+	position: absolute;
+	left: -100px;
+	top: 10px;
+	background: #000;
+	display: inline-block;
+	width: 100px;
+	opacity: .8; 
+	overflow: hidden;
+	/* For IE 5-7 */
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+	/* For IE 8 */
+	-MS-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+}
+
+.boxcaption{ 
+	float: left; 
+	position: absolute; 
+	background: #000; 
+	height: 50%; 
+	width: 100%; 
+	opacity: .8; 
+	/* For IE 5-7 */
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+	/* For IE 8 */
+	-MS-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+}
+
+/*
+	.captionfull .boxcaption {
+		top: 50%;
+		left: 0;
+	}
+	.caption .boxcaption {
+		top: 10%;
+		left: 0;
+	} */

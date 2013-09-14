@@ -1,0 +1,41 @@
+.ui-buttonset label.ui-state-default{
+	background: #B4B4B4;
+    border: 1px solid #AAAAAA;
+    color: #212121;
+}
+
+.ui-buttonset label.ui-state-active{
+	background: #FFFFFF;
+    border: 1px solid #AAAAAA;
+    color: #212121;
+}
+
+.ui-buttonset label.ui-button{
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+#voting-form 
+{
+	margin-top:20px;
+	margin-bottom:20px;
+}
+
+	#voting-form-buttonset
+	{
+		margin-top:20px;
+		margin-bottom:20px;
+	}
+
+	ul.form-line li.block
+	{
+		float:left;
+	}
+
+.likeContainer
+{
+	background: none repeat scroll 0 0 #000;
+    padding: 10px 0px;
+}
