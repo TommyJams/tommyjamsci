@@ -61,8 +61,8 @@ class Fbconnect extends CI_Controller{
 		/*define('FACEBOOK_APP_ID', '566516890030362');
 		define('FACEBOOK_SECRET', '731fb276b0e0e1a8a77ecbdf72e2591b'); */
 
-		//define('FACEBOOK_APP_ID', '204029036428158'); //pick from config
-		//define('FACEBOOK_SECRET', '74203bd7fc3f0100d2c02ad74b28b308'); 
+		define('FACEBOOK_APP_ID', '204029036428158'); 
+		define('FACEBOOK_SECRET', '74203bd7fc3f0100d2c02ad74b28b308'); 
 
 		$facebook = new Facebook(array(
   		/*'appId'  => '345757728821408',

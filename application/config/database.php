@@ -49,8 +49,8 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'tommyjamstest.cloudapp.net';
-$db['default']['username'] = '*********'; //Upload from local file
-$db['default']['password'] = '*********'; //Upload from local file
+$db['default']['username'] = 'tommyjamslinux';
+$db['default']['password'] = '1tommyblah';
 $db['default']['database'] = 'tommyjam_test';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
@@ -63,14 +63,6 @@ $db['default']['dbcollat'] = 'utf8_general_ci';
 $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
-
-//If there is a local config file, overwrite the settings with that..
-if (is_readable(FCPATH . 'config.local.php'))
-{
-    include_once(FCPATH . 'config.local.php');
-    foreach($db['default'] as $key => $val)
-        $db['default'][$key] = (isset($config['db'][$key])) ? $config['db'][$key] : $val;
-}
 
 /* End of file database.php */
 /* Location: ./application/config/database.php */

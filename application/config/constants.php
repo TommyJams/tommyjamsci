@@ -82,12 +82,7 @@ define('RADIO_FORM_MSG_API_FAILURE','Sorry. Try again later.');
 define('RADIO_FORM_MSG_DATABASE_INSERT_FAILURE','Sorry. Could not insert into database.');
 define('RADIO_FORM_SEND_MSG_OK','Thank you. Your request has been submitted! You will receive an email from us shortly.');
 
-//If there is a local config file, overwrite the settings with that..
-if (is_readable(FCPATH . 'config.local.php'))
-{
-    include_once(FCPATH . 'config.local.php');
-}
-
+define('DATABASE','tommyjam_test');
 
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */
