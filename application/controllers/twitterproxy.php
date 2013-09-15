@@ -9,12 +9,12 @@ class Twitterproxy extends CI_Controller{
 		$this->load->library('twitteroauth/TwitterOAuth');
 		// require_once("twitteroauth/twitteroauth.php"); //Path to twitteroauth library
  		
-		$twitteruser = "tommyjams";
+		$twitteruser = TWITTER_USER;
 		$notweets = 10;
-		$consumerkey = "Fh22VgGqVUgoFfhn4uADdw";
-		$consumersecret = "slSgXgHTTgi6z2cFl8dfWIwILM3njiWfQHaF8cE0xA";
-		$accesstoken = "630529499-sWjOJ9pXm9qufutOCUdw8iq0exSFj2RSoClsauSq";
-		$accesstokensecret = "iLsAk65xqzn8nXWmVul9gp33SvVz5AxN2UK1Lb7ew"; 
+		$consumerkey = TWITTER_KEY;
+		$consumersecret = TWITTER_SECRET;
+		$accesstoken = TWITTER_ACCESSTOKEN;
+		$accesstokensecret = TWITTER_ACCESSTOKENSECRET; 
  
 		function getConnectionWithAccessToken($cons_key, $cons_secret, $oauth_token, $oauth_token_secret) {
   			$connection = new TwitterOAuth($cons_key, $cons_secret, $oauth_token, $oauth_token_secret);
