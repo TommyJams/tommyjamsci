@@ -87,6 +87,7 @@
     }
     function promoterGigs()
     {
+      $("#loading-indicator").show();
       $.post('promoter/mygigs','',promoterGigsCallback,'json');
     }
 
@@ -97,6 +98,7 @@
     }
     function promoterProfile()
     {
+      $("#loading-indicator").show();
       $.post('promoter/profilepage','',promoterProfileCallback,'json');
     }    
 
@@ -204,6 +206,7 @@
     }
     function recommendArtist(id)
     {
+      $("#loading-indicator").show();
       console.log("Link Value: ", JSON.stringify(id));
       $.post('promoter/recommendArtist',{link: id},recommendArtistCallback,'json');
     }
