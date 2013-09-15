@@ -899,8 +899,8 @@ class Base extends MY_Controller{
 		}
 
 		$this->session->sess_destroy();
-		$index = echo base_url("index");
-		redirect($index);
+		//$index = echo base_url("index");
+		redirect('http://testcodeigniter.azurewebsites.net/index');
 		exit;
 	}
 }
