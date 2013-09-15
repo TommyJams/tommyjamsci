@@ -899,7 +899,8 @@ class Base extends MY_Controller{
 		}
 
 		$this->session->sess_destroy();
-		redirect('/index', 'refresh');
+		echo base_url("index");
+		//redirect(base_url(), 'index');
 		exit;
 	}
 }
