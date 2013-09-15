@@ -11,12 +11,14 @@
 
         $(function() {
             $('#profilePicForm').submit(function(e) {
+                console.log('profilePicForm');
                 e.preventDefault();
                 uploadProfilePic('upload');
                 popup('profil');
             });
 
         $(function() {
+            console.log('facebookPicForm');
             $('#facebookPicForm').submit(function(e) {
                 e.preventDefault();
                 uploadProfilePic('facebook');
