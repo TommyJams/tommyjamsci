@@ -42,18 +42,8 @@ class Artist extends Base{
 	    
 	    if(!$results)
 	    {
-	    	$gig=""; 
-	    	$city=""; 
-	    	$formattedDate=""; 
-	    	$time=""; 
-	    	$statuss=""; 
-	    	$promoter=""; 
-	    	$promoter_name=""; 
-	    	$contact="";;
-
-	    	$dibRow = array($gig, $city, $formattedDate, $time, $statuss, $promoter, $promoter_name, $contact);
-
-			$response['dibHistory'][] = $dibRow;
+	    	$noValue = 0;
+			$response['noValue'] = $noValue;
 	    }
 
 	    else

@@ -23,6 +23,9 @@
                 <span class="gigs" style="padding:10px;" >
                     <div class='gigsTableItemContainer'>
                         <?php 
+                        $noValue = (json_decode($_POST['json'])->noValue);
+
+                        if($noValue != 0){
                         $dibsHistory = (json_decode($_POST['json'])->dibHistory);
                         foreach($dibsHistory as $row){ ?>
                         <?
@@ -63,7 +66,7 @@
                                 print("</td>
                             </tr>
                         </table>");                   
-                    ?><?php } ?>
+                    ?><?php } }?>
                     </div>
                 </span>
         </div> <!--boxy-->
