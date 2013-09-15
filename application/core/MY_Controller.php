@@ -78,6 +78,7 @@ class Base extends MY_Controller{
 		$nsilver = "";
 		$userRating = "";
 		$users = "";
+		$error = "";
 		
 		if(isset($sessionArray['username_artist'])  && !isset($_POST['id']))
 		{
@@ -197,7 +198,6 @@ class Base extends MY_Controller{
 		$response['about'] = $about;
 		$response['users'] = $users;
 		$response['error'] = $error;
-
 		$this->load->helper('functions');
 		createResponse($response);
 	}
