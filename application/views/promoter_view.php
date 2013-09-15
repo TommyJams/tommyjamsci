@@ -294,8 +294,6 @@
            data           : {'type': type},
            success        : uploadProfilePicCallback
           });
-      return false;
-      });
     }
 
     function showGigFeedbackCallback(a)
