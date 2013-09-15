@@ -21,7 +21,7 @@ function send_email($to, $sender, $subject, $body){
     	$CI->load->library('phpmailer/PHPMailer');
     	$mail = new PHPMailer();  // create a new object
 		$mail->IsSMTP(); // enable SMTP
-		$mail->SMTPDebug = 2;  // debugging: 1 = errors and messages, 2 = messages only
+		$mail->SMTPDebug = 1;  // debugging: 1 = errors and messages, 2 = messages only
 		$mail->SMTPAuth = true;  // authentication enabled
 		$mail->SMTPSecure = 'tls'; // secure transfer enabled REQUIRED for GMail
 		$mail->Host = SMTP_HOST;
