@@ -603,7 +603,7 @@ class Base extends MY_Controller{
 		error_log("Gig Id: ".$data['gig_id']);
 
 		if(isset($sessionArray['username'])){ $this->load->view('promoter_view', $data); }
-		elseif(isset($sessionArray['username_artist'])){ $this->load->view('artist_view', , $data); }
+		elseif(isset($sessionArray['username_artist'])){ $this->load->view('artist_view', $data); }
 	}
 
 	public function showGigFeedback()
