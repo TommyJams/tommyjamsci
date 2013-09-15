@@ -1,6 +1,6 @@
 <?php
-mysql_close(mysql_connect("tommyjamstest.cloudapp.net","tommyjams","1tommyblah"));
-$connection = mysql_connect("tommyjamstest.cloudapp.net","tommyjams","1tommyblah");
+mysql_close(mysql_connect(DATABASE_HOST,DATABASE_USERNAME,DATABASE_PASSWORD));
+$connection = mysql_connect(DATABASE_HOST,DATABASE_USERNAME,DATABASE_PASSWORD);
 if (!$connection) {
 	die("Database connection failed: " . mysql_error());
 }
