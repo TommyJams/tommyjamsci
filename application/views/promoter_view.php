@@ -281,6 +281,7 @@
     function uploadProfilePicCallback(a)
     {
         console.log("Data: ", JSON.stringify(a));
+        promoterProfile();
     }
     function uploadProfilePic(type)
     {
