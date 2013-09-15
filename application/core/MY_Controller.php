@@ -1087,5 +1087,134 @@ class Base extends MY_Controller{
             }
     	}
     }
+
+    public function searchProfiles()
+	{
+		$sessionArray = $this->session->all_userdata();
+
+		if (!isset($sessionArray['session_id'])) {
+			session_start();
+		}
+		else if(isset($sessionArray['username_artist']))
+		{
+			$username=$sessionArray['username_artist'];
+			$password=md5($sessionArray['password_artist']);
+			$actual_type = 'Artist';
+		}
+		else if(isset($sessionArray['username']))
+		{
+			$username=$sessionArray['username'];
+			$password=md5($sessionArray['password']);
+			$actual_type = 'Venue';
+		}
+
+		//What is the query string
+		if(isset($_POST['searchString']))								//Search string passed in query?
+			$searchProfiles = $_POST['searchString'];
+		else
+		{
+			$searchProfiles = $this->session->userdata('searchProfilesString');	//Search string present in session?
+		}
+
+		// Which page to show?
+		if(isset($_POST['nPage']) && $_POST['nPage']!=NULL)				//Page passed in query?
+			$nPage = $_POST['nPage'];
+		else
+		{
+			$nPage = $this->session->userdata('searchProfilesPage');			//Page present in session?
+
+			if($nPage === FALSE)										
+				$nPage = 1;												//Fresh ask for find gigs
+		}
+
+		
+		if($searchProfiles)
+		
+		{
+
+			$query = "SELECT COUNT(*) as num FROM `".DATABASE."`.`members` WHERE (`name` LIKE '%$searchProfiles%' OR `username` LIKE '%$searchProfiles%' OR `about` LIKE '%$searchProfiles%'  OR `email` LIKE '%$searchProfiles%'  OR `mobile` LIKE '%$searchProfiles%')  AND status!=2";
+
+			$total_pages = mysql_fetch_array(mysql_query($query));
+
+			$total_pages = $total_pages['num']/7;
+
+			$total_pages=ceil($total_pages);
+
+			$v=0;
+
+			$que = "SELECT * FROM `".DATABASE."`.`members` WHERE (`name` LIKE '%$searchProfiles%' OR `username` LIKE '%$searchProfiles%' OR `about` LIKE '%$searchProfiles%'  OR `email` LIKE '%$searchProfiles%'  OR `mobile` LIKE '%$searchProfiles%') AND status!=2";
+
+			$sea=mysql_query($que);
+
+			while($a = mysql_fetch_assoc($sea))
+
+			{
+
+				$v=$v+1;
+
+				if($v<($nPage*7) && $v>($nPage*7)-7)
+
+				{
+
+					$id=$a["id"];$name=$a["name"];$city=$a["city"];$usernam=$a["username"];
+
+					$state=$a["state"];$type=$a["type"];$fb=$a["fb"];$twitter=$a["twitter"];
+
+					$youtube=$a["youtube"];$rever=$a["reverbnation"];$gplus=$a["gplus"];$myspace=$a["myspace"];$link=$a["link"];
+
+					$user=$a["user"];
+
+					if($type=="Promoter" && $user!=""){     $users="images/promoter/$user";$usersa="../images/promoter/$user";; }
+
+					elseif($type=="Artist"  && $user!=""){     $users="images/artist/$user";$usersa="../images/artist/$user"; }
+
+					else{$usersa="images/profile.jpg";}
+										
+					if(!file_exists($usersa)&& $user==""){$users="images/profile.jpg";}
+
+					else if(!file_exists($usersa) && $user!=""){$users="https://graph.facebook.com/"."$user/picture?type=square";}
+
+					$linker=$link*15999;
+
+					if(isset($username) && $actual_type == 'Venue'){$goto="$link";}
+
+					else if(isset($username) && $actual_type == 'Artist'){$goto="$link";}
+
+					else{$goto=NULL;}
+
+					$profileRow = array($users, $goto, $name, $usernam, $type, $city, $fb, $twitter, $rever, $youtube, $myspace, $gplus);
+
+					$response['foundProfiles'][] = $profileRow;
+
+				}
+
+			}
+
+		}
+		
+		else
+		
+		{
+		
+			$total_pages = 0;
+		
+		}
+
+		//Save data in session
+		$sessionData = array(
+	          'searchProfilesPage'  => $nPage,
+	          'searchProfilesString'  => $searchProfiles
+        );
+		$this->session->set_userdata($sessionData);
+
+		//Save some page level data in response
+		$response['nPage'] = $nPage;
+		$response['searchProfiles'] = $searchProfiles;
+		$response['total_pages'] = $total_pages;
+
+		$this->load->helper('functions');
+		createResponse($response);
+	}
+
 }
 ?>
