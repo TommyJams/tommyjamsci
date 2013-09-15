@@ -10,17 +10,17 @@
         window.onload = init();*/
 
         $(function() {
-            $('#profilePicForm').submit(function(e) {
-                console.log('profilePicForm');
+            $('#profilePicForm').bind('submit',function(e) {
                 e.preventDefault();
+                console.log('profilePicForm');
                 uploadProfilePic('upload');
                 popup('profil');
             });
 
         $(function() {
-            console.log('facebookPicForm');
-            $('#facebookPicForm').submit(function(e) {
+            $('#facebookPicForm').bind('submit',function(e) {
                 e.preventDefault();
+                console.log('facebookPicForm');
                 uploadProfilePic('facebook');
                 popup('profil');
             });
