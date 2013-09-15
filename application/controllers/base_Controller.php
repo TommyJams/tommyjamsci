@@ -1,6 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Base extends CI_Controller{
+class Base_Controller extends CI_Controller{
 
 	public function checkUserSession(){
 
@@ -602,7 +602,7 @@ class Base extends CI_Controller{
 	{
 		$sessionArray = $this->session->all_userdata();
 
-		if (!isset($sessionArray['session_id'])) {
+		if(!isset($sessionArray['session_id'])){
 			session_start();
 		}
 
@@ -610,7 +610,25 @@ class Base extends CI_Controller{
 		{
 			$username=$sessionArray['username'];
 			$password=md5($sessionArray['password']);
+			$response['role'] = 'p';
+		}
+		elseif(isset($sessionArray['username_artist']))
+		{
+			$username=$sessionArray['username_artist'];
+			$password=md5($sessionArray['password_artist']);
+			$response['role'] = 'a';
+		}
+		elseif((!isset($sessionArray['username'])) && (!isset($sessionArray['username_artist'])))
+		{
+			$response['error'] = 1;
+			$response['reason'] = 'nologin';
 
+			$this->load->helper('functions');
+			createResponse($response);
+		}	
+
+		if((isset($sessionArray['username'])) || (isset($sessionArray['username_artist'])))	
+		{
 			$SQLs = "SELECT * FROM `".DATABASE."`.`members` WHERE fb_id='$username'";
 			$results = mysql_query($SQLs);
 			while ($a = mysql_fetch_assoc($results))
@@ -641,15 +659,29 @@ class Base extends CI_Controller{
 					createResponse($response);
 				}
 
-				if($prate!=0)	//Change for promoter
+				if(isset($sessionArray['username']))
 				{
-					$response['error'] = 1;
-					$response['reason'] = 'already';
-					$response['eventDate'] = $edate;
+					if($prate!=0)	//Change for promoter
+					{
+						$response['error'] = 1;
+						$response['reason'] = 'already';
+						$response['eventDate'] = $edate;
 
-					$this->load->helper('functions');
-					createResponse($response);	
+						$this->load->helper('functions');
+						createResponse($response);	
+					}
 				}
+				elseif(isset($sessionArray['username_artist']))
+				{
+					if($arate!=0)	
+					{
+						$response['error'] = 1;
+						$response['reason'] = 'already';
+						$response['eventDate'] = $edate;
+
+						$this->load->helper('functions');
+						createResponse($response);	
+				}	}
 
 				$artist_id=$found["artist_id"];$artist_name=$found["artist_name"];
 				$promoter_id=$found["promoter_id"];$promoter_name=$found["promoter_name"];
@@ -666,7 +698,7 @@ class Base extends CI_Controller{
 				createResponse($response);
 			}
 
-			if($loggedInID != $promoter_id)	//Change for promoter
+			if(($loggedInID != $promoter_id) || ($loggedInID != $artist_id))	
 			{
 				$response['error'] = 1;
 				$response['reason'] = 'ineligible';
@@ -677,24 +709,14 @@ class Base extends CI_Controller{
 				createResponse($response);
 			}					
 		}
-		else
-		{
-			$response['error'] = 1;
-			$response['reason'] = 'nologin';
-
-			$this->load->helper('functions');
-			createResponse($response);
-		}
 
 		$response['error'] = 0;
 		$response['reason'] = 'fine';
 		$response['gig_id'] = $gig_id;
 		$response['gig_name'] = $gig_name;
-		$response['role'] = 'p';
 		$response['eventDate'] = $edate;
 		$response['promoter_name'] = $promoter_name;
 		$response['artist_name'] = $artist_name;
-
 
 		$this->load->helper('functions');
 		createResponse($response);		
@@ -713,7 +735,23 @@ class Base extends CI_Controller{
 		{
 			$username=$sessionArray['username'];
 			$password=md5($sessionArray['password']);
+		}
+		elseif(isset($sessionArray['username_artist']))
+		{
+			$username=$sessionArray['username_artist'];
+			$password=md5($sessionArray['password_artist']);
+		}
+		elseif((!isset($sessionArray['username'])) && (!isset($sessionArray['username_artist'])))
+		{
+			$response['error'] = 1;
+			$response['reason'] = 'nologin';
 
+			$this->load->helper('functions');
+			createResponse($response);
+		}	
+
+		if((isset($sessionArray['username'])) || (isset($sessionArray['username_artist'])))
+		{	
 			$SQLs = "SELECT * FROM `".DATABASE."`.`members` WHERE fb_id='$username'";
 			$results = mysql_query($SQLs);
 			while ($a = mysql_fetch_assoc($results))
@@ -721,27 +759,54 @@ class Base extends CI_Controller{
 				$loggedInID=$a["link"];
 			}
 
-			if(isset($_POST["gig"]) && isset($_POST["prate"]))	//Change for promoter
+			if(isset($_POST["gig"]))	//Change for promoter
 			{
-				$gigLink = $_POST['gigLink'];
-				$prate=$_POST['prate'];							//Change for promoter
-				$pcomment=$_POST['pcomment'];					//Change for promoter
-				$gig=$_POST['gig'];
-				$gigc=$_POST['gigc'];
-				$future=$_POST['future'];
+				if(isset($_POST["prate"])
+				{	
+					$gigLink = $_POST['gigLink'];
+					$prate=$_POST['prate'];							//Change for promoter
+					$pcomment=$_POST['pcomment'];					//Change for promoter
+					$gig=$_POST['gig'];
+					$gigc=$_POST['gigc'];
+					$future=$_POST['future'];
 
-				$q2 = "UPDATE `".DATABASE."`.`rating` SET `status` = '1', `promoter_rate` = '$prate',`promoter_comment` = '$pcomment', `promoter_gig_rate` = '$gig', `promoter_gig_comment` = '$gigc', `promoter_future` = '$future' WHERE `gig_id` = '$gigLink' AND `promoter_id` = '$loggedInID' "; //Change for promoter
-				$result_set2 = mysql_query($q2);
-				if (!$result_set2)
-				{
-					$response['error'] = 1;
-					$response['reason'] = 'queryfailed';
+					$q2 = "UPDATE `".DATABASE."`.`rating` SET `status` = '1', `promoter_rate` = '$prate',`promoter_comment` = '$pcomment', `promoter_gig_rate` = '$gig', `promoter_gig_comment` = '$gigc', `promoter_future` = '$future' WHERE `gig_id` = '$gigLink' AND `promoter_id` = '$loggedInID' "; 
+					$result_set2 = mysql_query($q2);
+					if (!$result_set2)
+					{
+						$response['error'] = 1;
+						$response['reason'] = 'queryfailed';
 
-					$this->load->helper('functions');
-					createResponse($response);
+						$this->load->helper('functions');
+						createResponse($response);
+					}
+
+					$q3 = "SELECT * FROM `".DATABASE."`.`rating` WHERE `gig_id`='$gigLink' AND `promoter_id`='$loggedInID' "; 
 				}
+				elseif(isset($_POST["arate"]))
+				{
 
-				$q3 = "SELECT * FROM `".DATABASE."`.`rating` WHERE `gig_id` = '$gigLink' AND `promoter_id` = '$loggedInID' "; //Change for promoter
+					$gigLink = $_POST['gigLink'];
+					$arate=$_POST['arate'];							
+					$acomment=$_POST['acomment'];					
+					$gig=$_POST['gig'];
+					$gigc=$_POST['gigc'];
+					$future=$_POST['future'];
+
+					$q2 = "UPDATE `".DATABASE."`.`rating` SET `status` = '1', `artist_rate` = '$arate',`artist_comment` = '$acomment', `artist_dib_rate` = '$gig', `artist_dib_comment` = '$gigc', `artist_future` = '$future' WHERE `gig_id` = '$gigLink' AND `artist_id` = '$loggedInID' "; 
+					$result_set2 = mysql_query($q2);
+					if (!$result_set2)
+					{
+						$response['error'] = 1;
+						$response['reason'] = 'queryfailed';
+
+						$this->load->helper('functions');
+						createResponse($response);
+					}
+
+					$q3 = "SELECT * FROM `".DATABASE."`.`rating` WHERE `gig_id` = '$gigLink' AND `artist_id` = '$loggedInID' ";
+				}	
+				
 				$result_set3 = mysql_query($q3);
 				if (!$result_set3)
 				{
@@ -760,7 +825,14 @@ class Base extends CI_Controller{
 
 				$to = "alerts@tommyjams.com";
 				$sender = "alerts@tommyjams.com";
-				$subject = "Gig has been rated by Promoter";
+
+				if(isset($sessionArray['username'])){
+					$subject = "Gig has been rated by Promoter";
+				}
+				elseif (isset($sessionArray['username_artist'])){
+					$subject = "Gig has been rated by Artist";
+				}
+
 				$mess="Gig: $gigName<br>Rating: $gig<br>Comment: $gigc";
 
 				$this->load->helper('mail');
@@ -774,9 +846,15 @@ class Base extends CI_Controller{
 					$silver = $a["silver"];
 					$nsilver = $a["nsilver"];
 					$nsilver++;
-					$avgsilver = ((($nsilver-1) * $silver) + $prate)/($nsilver);
+
+					if(isset($sessionArray['username'])){
+						$avgsilver = ((($nsilver-1) * $silver) + $prate)/($nsilver);
+					}
+					elseif (isset($sessionArray['username_artist'])){
+						$avgsilver = ((($nsilver-1) * $silver) + $arate)/($nsilver);
+					}
 					
-					$q3 = "UPDATE `".DATABASE."`.`members` SET `silver` = '$avgsilver',`nsilver` = '$nsilver' WHERE link=$promoter_id";
+					$q3 = "UPDATE `".DATABASE."`.`members` SET `silver`='$avgsilver',`nsilver`='$nsilver' WHERE link=$promoter_id";
 					$result_set3 = mysql_query($q3);
 					if (!$result_set3)
 					{
@@ -797,14 +875,6 @@ class Base extends CI_Controller{
 				createResponse($response);
 			}
 		}
-		else
-		{
-			$response['error'] = 1;
-			$response['reason'] = 'nologin';
-
-			$this->load->helper('functions');
-			createResponse($response);
-		}
 
 		$response['error'] = 0;
 		$response['reason'] = 'rated';
@@ -815,19 +885,14 @@ class Base extends CI_Controller{
 
 	public function sessionlogout(){
 
-		ob_start();
 		$sessionArray = $this->session->all_userdata();
 		
 		if (!isset($sessionArray['session_id'])) {
 			session_start();
 		}
 
-		$username=$sessionArray['username'];
-
-		$username=$sessionArray['username_artist'];
-
 		$this->session->sess_destroy();
-		redirect('http://testcodeigniter.azurewebsites.net/index');
+		redirect('/index');
 		exit;
 	}
 }
