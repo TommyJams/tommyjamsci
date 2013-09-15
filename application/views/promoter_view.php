@@ -292,14 +292,14 @@
       }
       else
       {
-        /*$.ajaxFileUpload({
-             url            : '/promoter/setProfilePicture/',
-             secureuri      : false,
-             fileElementId  : 'userImage',
-             dataType       : 'json',
-             data           : {'type': type},
-             success        : uploadProfilePicCallback
-            });*/
+        $.ajaxFileUpload({
+          url            : '/promoter/setProfilePicture/',
+          secureuri      : false,
+          fileElementId  : 'userImage',
+          dataType       : 'json',
+          data           : {'type': type},
+          success        : uploadProfilePicCallback
+        });
       }
     }
 
