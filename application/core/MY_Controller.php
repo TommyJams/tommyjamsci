@@ -78,7 +78,7 @@ class Base extends MY_Controller{
 		$nsilver = "";
 		$userRating = "";
 		$users = "";
-		$error = "";
+		//$error = "";
 		
 		if(isset($sessionArray['username_artist'])  && !isset($_POST['id']))
 		{
@@ -198,7 +198,7 @@ class Base extends MY_Controller{
 		{
 			$error = 1;
 		}
-		
+
 		$response['userRating'] = $userRating;
 		$response['about'] = $about;
 		$response['users'] = $users;
