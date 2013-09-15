@@ -769,7 +769,7 @@ class Base extends MY_Controller{
 
 			if(isset($_POST["gig"]))	//Change for promoter
 			{
-				if(isset($_POST["prate"])
+				if(isset($_POST["prate"]))
 				{	
 					$gigLink = $_POST['gigLink'];
 					$prate=$_POST['prate'];							//Change for promoter
