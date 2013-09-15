@@ -132,7 +132,7 @@
                             ?>
                                 <tr height='20' bgcolor='#000'>
                                     <td width=25%>
-                                        <?print("<a href='javascript:;' onClick=gig('$link'); class='highlightRef' ><h3>$gig</h3></a>");?>
+                                        <?print("<a href='javascript:;' onClick=gigProfile('$link'); class='highlightRef' ><h3>$gig</h3></a>");?>
                                     </td>
         							<td width=20%>
                                         <?print("<a href='javascript:;' onClick=showProfile('$pid'); class='highlightRef'><h3>$promoter_name</h3></a>");?>
