@@ -265,7 +265,7 @@
                 e.preventDefault();
                 console.log('profilePicForm');
                 uploadProfilePic('upload');
-                popup('profil');
+                //popup('profil');
             });
 
         $(function() {
@@ -273,7 +273,7 @@
                 e.preventDefault();
                 console.log('facebookPicForm');
                 uploadProfilePic('facebook');
-                popup('profil');
+                //popup('profil');
             });
 
         $('#loading-indicator').hide();
