@@ -4,7 +4,7 @@ class Artist extends Base{
 
 	public function mydibs(){
 		
-		$username = checkSession();
+		$username = $this->checkSession();
 
 		$q2 = "SELECT link FROM `".DATABASE."`.`members` WHERE fb_id='$username'";
 		$result_set2 = mysql_query($q2);	
@@ -62,7 +62,7 @@ class Artist extends Base{
 
 	public function findGigs()
 	{
-		$username = checkSession();
+		$username = $this->checkSession();
 
 		$todayTime = strtotime(date("Y-m-d"));
 

@@ -4,7 +4,7 @@ class Promoter extends Base{
 
 	public function mygigs(){
 
-		$username = checkSession();
+		$username = $this->checkSession();
 
 		// check whether initialization is required.
 		$artist_id = "";
@@ -65,7 +65,7 @@ class Promoter extends Base{
 
 	public function launchGigFunc(){
 
-		$username = checkSession();
+		$username = $this->checkSession();
 
 		$this->load->helper('functions');
 
@@ -164,7 +164,7 @@ class Promoter extends Base{
 
 	public function updateGigPage(){
 
-		$username = checkSession();
+		$username = $this->checkSession();
 
 		$SQLsa = "SELECT link FROM `".DATABASE."`.`members` WHERE `fb_id`='$username'";
 		$resultsa = mysql_query($SQLsa);
@@ -221,7 +221,7 @@ class Promoter extends Base{
 
 	public function updateGigProfile(){
 
-		$username = checkSession();
+		$username = $this->checkSession();
 
 		$id = $_POST['gigLink'];
 
@@ -272,7 +272,7 @@ class Promoter extends Base{
 
 	public function reactionDib(){
 
-		$username = checkSession();
+		$username = $this->checkSession();
 
 		error_log('reactionDib: 1');
 
@@ -595,7 +595,7 @@ class Promoter extends Base{
 
 	public function showDibs(){
 
-		$username = checkSession();
+		$username = $this->checkSession();
 
 		//$link=$_POST["link"]/15999;
 		$linker=$_POST["link"];
