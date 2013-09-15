@@ -1,6 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Promoter extends Base_Controller{
+class Promoter extends Base{
 
 	public function mygigs(){
 		ob_start();
