@@ -35,7 +35,7 @@
                             width:100%;
                             height: 100%; "/>
     <div id="profil" style="display:none;">
-		<a id="loginBoxClose" href="#" onClick="popup('profil')">
+		<a id="loginBoxClose" href="javascript:;" onClick="popup('profil')">
 		</a>
         <center>
             <h2>Upload your Profile Picture</h2>
@@ -90,8 +90,8 @@
         <div id="userStats">
 			<div id="userPic" class="pic">
 				<? if(!isset($_GET['id']))
-                {print("<a href='#' onclick=bindnpopup()>");}
-				else {print("<a href='#'>");}
+                {print("<a href='javascript:;' onclick=bindnpopup()>");}
+				else {print("<a href='javascript:;'>");}
 				print ("<img class='userStatsPic' src='$userpic'/>"); ?></a>
 			</div>
 			<div class="data">
