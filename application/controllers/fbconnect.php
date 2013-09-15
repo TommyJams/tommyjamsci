@@ -101,7 +101,7 @@ class Fbconnect extends CI_Controller{
         
   			if($registrationParam=='noregister'){
           $data2['val']=1;
-			 	  $this->load->view('fbConnect1_view', $data2);
+			 	  $this->load->view('fbConnect_view', $data2);
         }
         elseif ($registrationParam=='fbregistered') //User registered just now
         {
@@ -132,7 +132,7 @@ class Fbconnect extends CI_Controller{
                 {
                   $data['val']=2;
                   $data['mess']=$this->load->view('registration2_view', NULL, TRUE);
-                  $this->load->view('fbConnect1_view', $data);
+                  $this->load->view('fbConnect_view', $data);
 
                   /*print ("
                     <br><br>
@@ -236,7 +236,7 @@ class Fbconnect extends CI_Controller{
 
                     $data['val']=3;
                     $data['mess']=$this->load->view('registration3_view', $data1, TRUE);
-                    $this->load->view('fbConnect1_view', $data);
+                    $this->load->view('fbConnect_view', $data);
 
                     /*print ("
                     <br><br>
@@ -364,7 +364,7 @@ class Fbconnect extends CI_Controller{
           {
             /*$data['val']=4;
             $data['mess']=$this->load->view('registration4_view', NULL, TRUE);
-            $this->load->view('fbConnect1_view', $data);*/
+            $this->load->view('fbConnect_view', $data);*/
             
             if($sessionArray['username'])
             {
