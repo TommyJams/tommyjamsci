@@ -35,7 +35,7 @@
 	  <script type="text/javascript" src="<?php echo base_url();?>script/h5f.js"></script>
 	  <script type="text/javascript" src="<?php echo base_url();?>script/functions.js"></script>
 	  <script type="text/javascript" src="<?php echo base_url();?>script/csspopup.js"></script>
-    <script type="text/javascript" src="<?php echo base_url();?>script/ajaxfileupload.js"></script>
+    <!--<script type="text/javascript" src="<?php echo base_url();?>script/ajaxfileupload.js"></script>-->
     <script language="javascript"> 
 
     function loadblog(a) 
@@ -292,14 +292,14 @@
       }
       else
       {
-        $.ajaxFileUpload({
+        /*$.ajaxFileUpload({
              url            : '/promoter/setProfilePicture/',
              secureuri      : false,
              fileElementId  : 'userImage',
              dataType       : 'json',
              data           : {'type': type},
              success        : uploadProfilePicCallback
-            });
+            });*/
       }
     }
 
