@@ -803,7 +803,7 @@ class Base extends MY_Controller{
 					$pcomment=$_POST['pcomment'];					//Change for promoter
 					$gig=$_POST['gig'];
 					$gigc=$_POST['gigc'];
-					$future=$_POST['future'];
+					$future=(int)$_POST['future'];
 
 					$q2 = "UPDATE `".DATABASE."`.`rating` SET `status` = '1', `promoter_rate` = '$prate',`promoter_comment` = '$pcomment', `promoter_gig_rate` = '$gig', `promoter_gig_comment` = '$gigc', `promoter_future` = '$future' WHERE `gig_id` = '$gigLink' AND `promoter_id` = '$loggedInID' "; 
 					$result_set2 = mysql_query($q2);
@@ -826,7 +826,7 @@ class Base extends MY_Controller{
 					$acomment=$_POST['acomment'];					
 					$gig=$_POST['gig'];
 					$gigc=$_POST['gigc'];
-					$future=$_POST['future'];
+					$future=(int)$_POST['future'];
 
 					$q2 = "UPDATE `".DATABASE."`.`rating` SET `status` = '1', `artist_rate` = '$arate',`artist_comment` = '$acomment', `artist_dib_rate` = '$gig', `artist_dib_comment` = '$gigc', `artist_future` = '$future' WHERE `gig_id` = '$gigLink' AND `artist_id` = '$loggedInID' "; 
 					$result_set2 = mysql_query($q2);
