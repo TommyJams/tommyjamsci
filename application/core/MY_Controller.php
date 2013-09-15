@@ -194,6 +194,11 @@ class Base extends MY_Controller{
 			$error = 0;
 		}	
 
+		if(!isset($error))
+		{
+			$error = 1;
+		}
+		
 		$response['userRating'] = $userRating;
 		$response['about'] = $about;
 		$response['users'] = $users;

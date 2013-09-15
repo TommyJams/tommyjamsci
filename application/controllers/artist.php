@@ -66,10 +66,10 @@ class Artist extends Base{
 			$error = 0;
 		}	
 
-	/*	if(isset($error))
+		if(!isset($error))
 		{
 			$error = 1;
-		}	*/
+		}	
 
 		$response['error'] = $error;
 		$this->load->helper('functions');
