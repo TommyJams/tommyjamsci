@@ -259,14 +259,20 @@
     </section>
 
 	<script type="text/javascript">
+        $('#loading-indicator').hide();
+	</script>
 
-        $(function() {
+</body>
+
+    <script type="text/javascript">
+
+        /*$(function() {
             $('#profilePicForm').bind('submit',function(e) {
                 e.preventDefault();
                 console.log('profilePicForm');
                 uploadProfilePic('upload');
                 //popup('profil');
-            });
+            });*/
 
         $(function() {
             $('#facebookPicForm').bind('submit',function(e) {
@@ -275,9 +281,6 @@
                 uploadProfilePic('facebook');
                 //popup('profil');
             });
+    </script>
 
-        $('#loading-indicator').hide();
-	</script>
-
-</body>
 </html>
