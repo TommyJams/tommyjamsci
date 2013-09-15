@@ -190,11 +190,13 @@ class Base extends MY_Controller{
 			$gigRow = array($gig_name, $pr_id, $pr_name, $ar_id, $ar_name, $formattedDate, $v_city, $gig_id);
 
 			$response['gigHistory'][] = $gigRow;
+			$error = 0;
 		}	
 
 		$response['userRating'] = $userRating;
 		$response['about'] = $about;
 		$response['users'] = $users;
+		$response['error'] = $error;
 
 		$this->load->helper('functions');
 		createResponse($response);

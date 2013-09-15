@@ -23,9 +23,9 @@
                 <span class="gigs" style="padding:10px;" >
                     <div class='gigsTableItemContainer'>
                         <?php 
-                        $dibsHistory = (json_decode($_POST['json'])->dibHistory);
                         $error = (json_decode($_POST['json'])->error);
                         if($error == 0){
+                        $dibsHistory = (json_decode($_POST['json'])->dibHistory);    
                         foreach($dibsHistory as $row){ ?>
                         <?
                         $gig=$row[0];

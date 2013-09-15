@@ -227,6 +227,8 @@
                                 <div class="gig" style="">
                                     <span class="gigs" >
                                     <?php 
+                                    $error = (json_decode($_POST['json'])->error);
+                                    if($error == 0){
                                     $gigsHistory = (json_decode($_POST['json'])->gigHistory);
                                     foreach($gigsHistory as $row){ ?>
                                     <?
@@ -244,7 +246,7 @@
                                     { print("<table><tr><td id='gigNameColumn' width='30%'><a href='javascript:;' onClick=gigProfile('$gig_id'); class='highlightRef' >$gig_name</a></td><td id='nameColumn' width='30%'><a href='javascript:;' onClick=showProfile('$pr_id'); class='greenRef' >$pr_name</a></td>"); }
 									
 									print("<td width='40%'>$date<br>$city</td></tr></table>");
-                                    ?><?php } ?>
+                                    ?><?php } }?>
 									</span>
                                     <!--<span class="gigs"><? /*print("<td width='40%'>$formattedDate<br>$v_city</td></tr></table>");*/?></span>-->
                                     <!--<span class="gigs" style="color:#999; font-size:9px; line-height:3px; padding-top:10px;"></span>-->
