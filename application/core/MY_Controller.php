@@ -963,6 +963,7 @@ class Base extends MY_Controller{
 
     	if($_POST['type'] == 'upload')
     	{
+    		error_log('type: upload');
     		$a=rand(1,10);
             $usernam=md5($username.$a);
 
@@ -1045,6 +1046,7 @@ class Base extends MY_Controller{
     	}
     	elseif($_POST['type'] == 'facebook')
     	{
+	        error_log('type: facebook');
 	        $query = "UPDATE `$database`.`members` SET `user`='$username' WHERE fb_id='$username'";
             $ress = mysql_query($query);
             if (!$ress)

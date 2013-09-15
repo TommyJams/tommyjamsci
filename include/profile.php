@@ -10,16 +10,14 @@
 
             $('#profilePicForm').bind('submit',function(e) {
                 e.preventDefault();
-                console.log('profilePicForm');
                 uploadProfilePic('upload');
-                //popup('profil');
+                popup('profil');
             });
 
             $('#facebookPicForm').bind('submit',function(e) {
                 e.preventDefault();
-                console.log('facebookPicForm');
                 uploadProfilePic('facebook');
-                //popup('profil');
+                popup('profil');
             });
         }
     </script>
