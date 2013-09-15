@@ -92,13 +92,13 @@
 
 		<div id="leftSidebarBox">
 			<ul>
-				<li><a href="beta/aboutus.php" 	target="_blank" title="About Us" 		alt="About Us"><img src="<?php echo base_url();?>image/icons/sidebar/about_1.png"/></a></li>
-				<li><a href="beta/terms.php" 	target="_blank" title="Terms of Use" 	alt="Terms of Use"><img src="<?php echo base_url();?>image/icons/sidebar/terms_1.png"/></a></li>
+				<li><a href="/aboutus" 	target="_blank" title="About Us" 		alt="About Us"><img src="/images/icons/sidebar/about_1.png"/></a></li>
+				<li><a href="/terms" 	target="_blank" title="Terms of Use" 	alt="Terms of Use"><img src="/images/icons/sidebar/terms_1.png"/></a></li>
 				<!--<li><a href="faq.php" title="FAQ" alt="FAQ"><img src="beta/images/icons/sidebar/faq_1.png" style="width:100%; height:100%;"/></a></li>-->
-				<li><a href="beta/careers.php" 	target="_blank" title="Careers" 		alt="Careers"><img src="<?php echo base_url();?>image/icons/sidebar/careers_1.png"/></a></li>
-				<li><a href="beta/press.php" 	target="_blank" title="Press" 			alt="Press"><img src="<?php echo base_url();?>image/icons/sidebar/press_1.png"/></a></li>
-				<li><a href="beta/advertise.php" target="_blank" title="Advertise" 		alt="Advertise"><img src="<?php echo base_url();?>image/icons/sidebar/advertise_1.png"/></a></li>
-				<li><a href="beta/help.php" 	target="_blank" title="Help" 			alt="Help"><img src="<?php echo base_url();?>image/icons/sidebar/help_1.png"/></a></li>
+				<li><a href="/careers" 	target="_blank" title="Careers" 		alt="Careers"><img src="/images/icons/sidebar/careers_1.png"/></a></li>
+				<li><a href="/press" 	target="_blank" title="Press" 			alt="Press"><img src="/images/icons/sidebar/press_1.png"/></a></li>
+				<li><a href="/advertise" target="_blank" title="Advertise" 		alt="Advertise"><img src="/images/icons/sidebar/advertise_1.png"/></a></li>
+				<li><a href="/help" 	target="_blank" title="Help" 			alt="Help"><img src="/images/icons/sidebar/help_1.png"/></a></li>
 			</ul>
 		</div>
 

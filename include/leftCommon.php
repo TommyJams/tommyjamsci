@@ -57,6 +57,6 @@
         <li><a href="/careers" 	target="_blank" title="Careers" 		alt="Careers"><img src="/images/icons/sidebar/careers_1.png"/></a></li>
         <li><a href="/press" 	target="_blank" title="Press" 			alt="Press"><img src="/images/icons/sidebar/press_1.png"/></a></li>
         <li><a href="/advertise" target="_blank" title="Advertise" 		alt="Advertise"><img src="/images/icons/sidebar/advertise_1.png"/></a></li>
-        <li><a href="/help" 		target="_blank" title="Help" 			alt="Help"><img src="/images/icons/sidebar/help_1.png"/></a></li>
+        <li><a href="/help" 	target="_blank" title="Help" 			alt="Help"><img src="/images/icons/sidebar/help_1.png"/></a></li>
     </ul>
 </div>
