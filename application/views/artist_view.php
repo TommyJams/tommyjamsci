@@ -89,7 +89,7 @@
       	$.post('artist/mydibs','',artistDibsCallback,'json');
     }
 
-    function artistProfileCallback(a)
+  /*  function artistProfileCallback(a)
     {
       	$("#lefty").load("include/profile.php", {json: JSON.stringify(a)});
     }
@@ -97,7 +97,7 @@
     {
       	$("#loading-indicator").show();
       	$.post('artist/profilepage','',artistProfileCallback,'json');
-    }
+    }*/
 
     function showProfileCallback(a)
     {
@@ -189,7 +189,7 @@
     function uploadProfilePicCallback(a)
     {
         console.log("Data: ", JSON.stringify(a));
-        artistProfile();
+        showProfile();
     }
     function uploadProfilePic(type)
     {
@@ -210,7 +210,7 @@
           success        : function (data, status)
                            {
                               console.log(data.msg);
-                              artistProfile();
+                              showProfile();
                            }
         });
       }

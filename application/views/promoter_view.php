@@ -92,7 +92,7 @@
       $.post('promoter/mygigs','',promoterGigsCallback,'json');
     }
 
-    function promoterProfileCallback(a)
+  /*  function promoterProfileCallback(a)
     {
       console.log("Profile Data: ", JSON.stringify(a));
       $("#lefty").load("include/profile.php", {json: JSON.stringify(a)});
@@ -101,19 +101,20 @@
     {
       $("#loading-indicator").show();
       $.post('promoter/profilepage','',promoterProfileCallback,'json');
-    }    
+    }    */
 
-	  function showProfile(user_id)
+	  function showProfileCallback(a)
+    {
+      console.log("Data: ", JSON.stringify(a));
+      $("#lefty").load("include/profile.php", {json: JSON.stringify(a)}); 
+    }
+    function showProfile(user_id)
     {
       $("#loading-indicator").show();
       $.post('promoter/profilepage',{id: user_id},showProfileCallback,'json');
       console.log("id: ", user_id);
     }
-    function showProfileCallback(a)
-    {
-      console.log("Data: ", JSON.stringify(a));
-      $("#lefty").load("include/profile.php", {json: JSON.stringify(a)}); 
-    }
+    
 
     function gigProfileCallback(a) 
     {
@@ -281,7 +282,7 @@
     function uploadProfilePicCallback(a)
     {
         console.log("Data: ", JSON.stringify(a));
-        promoterProfile();
+        showProfile();
     }
     function uploadProfilePic(type)
     {
@@ -302,7 +303,7 @@
           success        : function (data, status)
                            {
                               console.log(data.msg);
-                              promoterProfile();
+                              showProfile();
                            }
         });
       }
@@ -412,7 +413,7 @@
               <a  href="javascript:;" onClick="promoterGigs()"><h3>My Gigs</h3></a>
             </li>
             <li>
-              <a href="javascript:;" onClick="promoterProfile()"><h3>Profile</h3></a>
+              <a href="javascript:;" onClick="showProfile()"><h3>Profile</h3></a>
             </li>
             <li>
               <a href="javascript:;" onClick="showEditProfile();"><h3>Edit Profile</h3></a>
