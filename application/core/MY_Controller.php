@@ -148,14 +148,14 @@ class Base extends MY_Controller{
 
 				if(isset($sessionArray['username']))
 				{
-					$username=$sessionArray['username'];
-					if($username == $a['fb_id'])
+					//$username=$sessionArray['username'];
+					//if($username == $a['fb_id'])
 						$loggedIn = 1;
 				}
 				elseif(isset($sessionArray['username_artist']))
 				{
-					$username=$sessionArray['username_artist'];
-					if($username == $a['fb_id'])
+					//$username=$sessionArray['username_artist'];
+					//if($username == $a['fb_id'])
 						$loggedIn = 1;
 				}
 				else
