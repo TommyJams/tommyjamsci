@@ -286,14 +286,21 @@
     {
       console.log('type: ',type);
 
-      $.ajaxFileUpload({
-           url            : './promoter/setProfilePicture/',
-           secureuri      : false,
-           fileElementId  : 'userImage',
-           dataType       : 'json',
-           data           : {'type': type},
-           success        : uploadProfilePicCallback
-          });
+      if(type == 'facebook')
+      {
+        $.post('/promoter/setProfilePicture',{'type': type},uploadProfilePicCallback,'json');      
+      }
+      else
+      {
+        $.ajaxFileUpload({
+             url            : '/promoter/setProfilePicture/',
+             secureuri      : false,
+             fileElementId  : 'userImage',
+             dataType       : 'json',
+             data           : {'type': type},
+             success        : uploadProfilePicCallback
+            });
+      }
     }
 
     function showGigFeedbackCallback(a)
