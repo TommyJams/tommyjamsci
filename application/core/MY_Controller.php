@@ -78,7 +78,6 @@ class Base extends MY_Controller{
 		$nsilver = "";
 		$userRating = "";
 		$users = "";
-		//$error = "";
 		
 		if(isset($sessionArray['username_artist'])  && !isset($_POST['id']))
 		{
