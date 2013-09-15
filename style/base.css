@@ -1250,7 +1250,7 @@ div.main-body
     margin-top: -10px; /* =(6*41)/2; */
 	padding-left: 1px;
     position: fixed;
-	background-image:url('../beta/images/icons/sidebar/icon_right_arrow.png');
+	background-image:url('/images/icons/sidebar/icon_right_arrow.png');
 	background-position: 0px -39px;
 	background-repeat: no-repeat;
 	background-color: #ffcc00;
@@ -1304,14 +1304,14 @@ a.obom-overlay-video span.obom-image-overlay
 	left: 40px;
 	height: 264px;
 	width: 352px;
-	background-image: url("../beta/images/radioone/icon/image_overlay_grey.png");
+	background-image: url("/image/radioone/icon/image_overlay_grey.png");
 	background-repeat:no-repeat;
 	background-position:50% 50%;
 }
 
 a.obom-overlay-video span.obom-image-overlay:hover
 {
-	background-image: url("../beta/images/radioone/icon/image_overlay_blue.png");
+	background-image: url("/image/radioone/icon/image_overlay_blue.png");
 }
 
 .obomSummaryContainer
@@ -1365,14 +1365,14 @@ a.mewsic-overlay-video span.mewsic-image-overlay
 	height: 264px;
 	width: 352px;
     padding: 0px 40px;
-	background-image: url("../beta/images/radioone/icon/image_overlay_grey.png");
+	background-image: url("/image/radioone/icon/image_overlay_grey.png");
 	background-repeat:no-repeat;
 	background-position:50% 50%;
 }
 
 a.mewsic-overlay-video span.mewsic-image-overlay:hover
 {
-	background-image: url("../beta/images/radioone/icon/image_overlay_blue.png");
+	background-image: url("/image/radioone/icon/image_overlay_blue.png");
 }
 
 .mewsicSummaryContainer
