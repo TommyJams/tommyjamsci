@@ -53,34 +53,19 @@
 			$sender = "alerts@tommyjams.com";
 			$subject = "TommyJams Landing Page: Contact form";
 			
-			$this->load->helper('contactmail');
-			send_email($to, $sender, $subject, $body);
-
 			/*
-			$mail=new PHPMailer();
-			$mail->CharSet='UTF-8';
-	
-			$mail->SetFrom($values['contact-form-mail'],$values['contact-form-name']); 
-			$mail->AddReplyTo($values['contact-form-mail'],$values['contact-form-name']); 
-	
-			$mail->AddAddress(CONTACT_FORM_TO_EMAIL,CONTACT_FORM_TO_NAME);
+			//Using phpMailer
+			$this->load->helper('contactmail');
+			send_email($to, $sender, $subject, $body);*/
 
-			$smtp=CONTACT_FORM_SMTP_HOST;
-			if(!empty($smtp))
-			{
-				$mail->IsSMTP();
-				$mail->SMTPDebug = 1;
-				$mail->SMTPAuth=true; 
-				$mail->SMTPSecure=CONTACT_FORM_SMTP_SECURE;
-		
-				$mail->Port=CONTACT_FORM_SMTP_PORT;
-				$mail->Host=CONTACT_FORM_SMTP_HOST;
-				$mail->Username=CONTACT_FORM_SMTP_USER;
-				$mail->Password=CONTACT_FORM_SMTP_PASSWORD;
-			}
-	
-			$mail->Subject=CONTACT_FORM_SUBJECT;
-			$mail->MsgHTML($body); */
+			//Using codeigniter mail library
+			$this->load->library('email');
+			$this->email->from($sender, 'TommyJams Admin');
+			$this->email->to($to); 
+			$this->email->subject($subject);
+			$this->email->message($body);
+
+			$this->email->send();
 
 		/*	if(!$mail->Send())
 			{

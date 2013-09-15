@@ -17,7 +17,7 @@ function send_email($to, $sender, $subject, $body){
 	//	$headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n";
 
     //	require_once("phpmailer/class.phpmailer.php");
-    	/*$CI =& get_instance();
+    	$CI =& get_instance();
     	$CI->load->library('phpmailer/PHPMailer');
     	$mail = new PHPMailer();  // create a new object
 		$mail->IsSMTP(); // enable SMTP
@@ -40,15 +40,6 @@ function send_email($to, $sender, $subject, $body){
 			$error = 'Message sent!';
 			return true;
 		}
-    	console.log('$error'); */
-
-		$this->load->library('email');
-		$this->email->from($sender, 'TommyJams Admin');
-		$this->email->to($to); 
-		$this->email->subject($subject);
-		$this->email->message($message);
-
-		$this->email->send();
-
+    	console.log('$error'); 
 	}
 ?>
