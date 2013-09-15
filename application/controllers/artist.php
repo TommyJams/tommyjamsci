@@ -2,6 +2,25 @@
 
 class Artist extends Base{
 
+	public function checkSession(){
+
+		$sessionArray = $this->session->all_userdata();
+
+		if(!isset($sessionArray['session_id'])) {
+			session_start();
+		}
+		elseif(isset($sessionArray['username_artist']))
+		{
+			$username=$sessionArray['username_artist'];
+		}
+		else
+		{
+			$this->sessionlogout();
+			exit;
+		}
+		return($username);
+	}
+
 	public function mydibs(){
 		
 		$username = $this->checkSession();
@@ -531,25 +550,6 @@ class Artist extends Base{
 		$response['status']=1;
 		error_log($response['status']);
 		createResponse($response);
-	}
-
-	public function checkSession(){
-
-		$sessionArray = $this->session->all_userdata();
-
-		if(!isset($sessionArray['session_id'])) {
-			session_start();
-		}
-		elseif(isset($sessionArray['username_artist']))
-		{
-			$username=$sessionArray['username_artist'];
-		}
-		else
-		{
-			$this->sessionlogout();
-			exit;
-		}
-		return($username);
 	}
 
 	public function sessionlogout(){
