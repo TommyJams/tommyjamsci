@@ -145,7 +145,7 @@ class Base extends MY_Controller{
 
 				$response=$a;
 
-				if(isset($sessionArray['username'])
+				if(isset($sessionArray['username']))
 				{
 					$username=$sessionArray['username'];
 					if($username == $a['fb_id'])
@@ -158,7 +158,9 @@ class Base extends MY_Controller{
 						$loggedIn = 1;
 				}
 				else
+				{
 					$loggedIn = 0;
+				}
 			}
 			else
 			{
@@ -180,6 +182,7 @@ class Base extends MY_Controller{
 	 	elseif($type=="Artist"){     $users="/images/artist/$user";$usersa="/images/artist/$user"; }
 		if(!file_exists($usersa) && $user==""){$users="/images/profile.jpg";}
 		else if(!file_exists($usersa) && $user!=""){$users="https://graph.facebook.com/"."$user/picture?type=large";}
+		error_log('FilePath: '.$usersa);
 
 		// Gig Portfolio Details 
 	    if($type=="Promoter"){   
@@ -987,27 +990,23 @@ class Base extends MY_Controller{
             if(isset($sessionArray['username_artist'])){     $upload_path = './images/artist/'; }
             elseif(isset($sessionArray['username'])){     $upload_path = './images/promoter/'; }
 
-            error_log('upload: 1');
             $config['upload_path'] = $upload_path;
 			$config['allowed_types'] = 'gif|jpg|png|bmp';
 			$config['max_size']  = 1024 * 8;
 			$config['encrypt_name'] = TRUE;
 
 			$this->load->library('upload', $config);
-			error_log('upload: 2');
+
 			if (!$this->upload->do_upload())
 			{
-				error_log('upload: 3');
 				$response['error'] = 1;
 				$msg = $this->upload->display_errors('', '');
 				$response['msg'] = $msg;
-				error_log('upload: 3_1'.$msg);
 				$this->load->helper('functions');
 				createResponse($response);
 			}
 			else
 			{
-				error_log('upload: 4');
 				$data = $this->upload->data();
 				//$file_id = $this->files_model->insert_file($data['file_name'], $_POST['title']);
 
@@ -1016,8 +1015,7 @@ class Base extends MY_Controller{
                 $ress = mysql_query($query);
                 if (!$ress)
                 {
-                	error_log('upload: 5');
-					$response['error'] = 1;
+                	$response['error'] = 1;
 					$msg = "Filename could not be saved";
 					$response['msg'] = $msg;
 
@@ -1026,8 +1024,7 @@ class Base extends MY_Controller{
         		}
                 else
                 {
-                	error_log('upload: 6');
-					$response['error'] = 0;
+                	$response['error'] = 0;
 					$msg = "File $filename successfully uploaded";
 					$response['msg'] = $msg;
 
