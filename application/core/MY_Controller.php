@@ -84,6 +84,7 @@ class Base extends MY_Controller{
 		{
 			$username=$sessionArray['username_artist'];
 			$password=md5($sessionArray['password_artist']);
+			$loggedIn=1;
 
 			$SQLs = "SELECT * FROM `".DATABASE."`.`members` WHERE fb_id='$username'";
 			$results = mysql_query($SQLs);
@@ -106,6 +107,7 @@ class Base extends MY_Controller{
 		{
 			$username=$sessionArray['username'];
 			$password=md5($sessionArray['password']);
+			$loggedIn=1;
 
 			$SQLs = "SELECT * FROM `".DATABASE."`.`members` WHERE fb_id='$username'";
 			$results = mysql_query($SQLs);
@@ -142,6 +144,21 @@ class Base extends MY_Controller{
 				$gold=$a["gold"];$silver=$a["silver"];$nsilver=$a["nsilver"];$bronze=$a["bronze"];$link=$a["link"];
 
 				$response=$a;
+
+				if(isset($sessionArray['username'])
+				{
+					$username=$sessionArray['username'];
+					if($username == $a['fb_id'])
+						$loggedIn = 1;
+				}
+				elseif(isset($sessionArray['username_artist']))
+				{
+					$username=$sessionArray['username_artist'];
+					if($username == $a['fb_id'])
+						$loggedIn = 1;
+				}
+				else
+					$loggedIn = 0;
 			}
 			else
 			{
@@ -159,9 +176,9 @@ class Base extends MY_Controller{
 			{$about="Add details for this section by editing your profile";}
 
 		// Logged in user's profile image
-		if($type=="Promoter"){     $users="images/promoter/$user";$usersa="/images/promoter/$user";; }
-	 	elseif($type=="Artist"){     $users="images/artist/$user";$usersa="/images/artist/$user"; }
-		if(!file_exists($usersa) && $user==""){$users="images/profile.jpg";}
+		if($type=="Promoter"){     $users="/images/promoter/$user";$usersa="/images/promoter/$user";; }
+	 	elseif($type=="Artist"){     $users="/images/artist/$user";$usersa="/images/artist/$user"; }
+		if(!file_exists($usersa) && $user==""){$users="/images/profile.jpg";}
 		else if(!file_exists($usersa) && $user!=""){$users="https://graph.facebook.com/"."$user/picture?type=large";}
 
 		// Gig Portfolio Details 
@@ -203,6 +220,7 @@ class Base extends MY_Controller{
 		$response['about'] = $about;
 		$response['users'] = $users;
 		$response['error'] = $error;
+		$response['loggedIn'] = $loggedIn;
 		$this->load->helper('functions');
 		createResponse($response);
 	}

@@ -89,7 +89,9 @@
     <section id="left">
         <div id="userStats">
 			<div id="userPic" class="pic">
-				<? if(!isset($_GET['id']))
+				<? 
+                <? $loggedIn = (json_decode($_POST['json'])->loggedIn); ?>
+                if(isset($loggedIn) && $loggedIn)
                 {print("<a href='javascript:;' onclick=bindnpopup()>");}
 				else {print("<a href='javascript:;'>");}
 				print ("<img class='userStatsPic' src='$userpic'/>"); ?></a>
