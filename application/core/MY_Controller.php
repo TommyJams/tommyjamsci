@@ -79,8 +79,10 @@ class Base extends MY_Controller{
 		$nsilver = "";
 		$userRating = "";
 		$users = "";
+
+		$link = $_POST['id'];
 		
-		if((isset($sessionArray['username_artist']))  && (!isset($_POST['id'])))
+		if((isset($sessionArray['username_artist']))  && (!isset($link)))
 		{
 			$username=$sessionArray['username_artist'];
 			$password=md5($sessionArray['password_artist']);
@@ -103,7 +105,7 @@ class Base extends MY_Controller{
 				$response=$a;
 			}
 		}
-		else if((isset($sessionArray['username']))  && (!isset($_POST["id"])))
+		elseif((isset($sessionArray['username']))  && (!isset($link)))
 		{
 			$username=$sessionArray['username'];
 			$password=md5($sessionArray['password']);
@@ -125,7 +127,7 @@ class Base extends MY_Controller{
 				$response=$a;
 			}
 		}
-		else
+		elseif(((isset($sessionArray['username'])) || (isset($sessionArray['username_artist']))) && (isset($link)))
 		{
 			$link = $_POST['id'];
 			error_log("Link: ".$link);
