@@ -88,9 +88,8 @@
     <? $userpic = (json_decode($_POST['json'])->users); ?>
     <section id="left">
         <div id="userStats">
-			<div id="userPic" class="pic">
-				<? 
-                <? $loggedIn = (json_decode($_POST['json'])->loggedIn); ?>
+			<div id="userPic" class="pic"> 
+                <? $loggedIn = (json_decode($_POST['json'])->loggedIn);
                 if(isset($loggedIn) && $loggedIn)
                 {print("<a href='javascript:;' onclick=bindnpopup()>");}
 				else {print("<a href='javascript:;'>");}
