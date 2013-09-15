@@ -2,6 +2,25 @@
 
 class Promoter extends Base{
 
+	public function checkSession(){
+
+		$sessionArray = $this->session->all_userdata();
+
+		if(!isset($sessionArray['session_id'])) {
+			session_start();
+		}
+		elseif(isset($sessionArray['username']))
+		{
+			$username=$sessionArray['username'];
+		}
+		else
+		{
+			$this->sessionlogout();
+			exit;
+		}
+		return($username);
+	}
+
 	public function mygigs(){
 
 		$username = $this->checkSession();
@@ -620,7 +639,7 @@ class Promoter extends Base{
 		createResponse($response);
 	}
 
-	public function checkSession(){
+/*	public function checkSession(){
 
 		$sessionArray = $this->session->all_userdata();
 
@@ -637,7 +656,7 @@ class Promoter extends Base{
 			exit;
 		}
 		return($username);
-	}
+	}*/
 
 	public function sessionlogout(){
 
