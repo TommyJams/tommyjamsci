@@ -2,30 +2,6 @@
  <head>
 	<link rel='stylesheet' href='style/edit.css'>
 	<!-- Include the JS files -->
-
-    <script type="text/javascript">
-        /*function init() {
-        document.getElementById('loading').style.display = 'none';
-        }
-        window.onload = init();*/
-
-        $(function() {
-            $('#profilePicForm').bind('submit',function(e) {
-                e.preventDefault();
-                console.log('profilePicForm');
-                uploadProfilePic('upload');
-                popup('profil');
-            });
-
-        $(function() {
-            $('#facebookPicForm').bind('submit',function(e) {
-                e.preventDefault();
-                console.log('facebookPicForm');
-                uploadProfilePic('facebook');
-                popup('profil');
-            });
-    </script>
-
  </head>
  <body>
     <div id="blanket" style="display:none;
@@ -283,7 +259,24 @@
     </section>
 
 	<script type="text/javascript">
-		$('#loading-indicator').hide();
+
+        $(function() {
+            $('#profilePicForm').bind('submit',function(e) {
+                e.preventDefault();
+                console.log('profilePicForm');
+                uploadProfilePic('upload');
+                popup('profil');
+            });
+
+        $(function() {
+            $('#facebookPicForm').bind('submit',function(e) {
+                e.preventDefault();
+                console.log('facebookPicForm');
+                uploadProfilePic('facebook');
+                popup('profil');
+            });
+
+        $('#loading-indicator').hide();
 	</script>
 
 </body>
