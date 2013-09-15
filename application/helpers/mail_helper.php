@@ -40,11 +40,11 @@ function send_email($to, $sender, $subject, $mess){
 		$mail->SMTPDebug = 1;  // debugging: 1 = errors and messages, 2 = messages only
 		$mail->SMTPAuth = true;  // authentication enabled
 		$mail->SMTPSecure = 'tls'; // secure transfer enabled REQUIRED for GMail
-		$mail->Host = 'smtp.live.com';
-		$mail->Port = 25;
-		$mail->Username = 'alerts@tommyjams.com';
-		$mail->Password = '1tommyblah';           
-		$mail->SetFrom($sender, "TommyJams Admin");
+		$mail->Host = SMTP_HOST;
+		$mail->Port = SMTP_PORT;
+		$mail->Username = SMTP_USERNAME;
+		$mail->Password = SMTP_PASSWORD;           
+		$mail->SetFrom($sender, SMTP_SENDER);
 		$mail->IsHTML(true);
 		$mail->Subject = $subject;
 		$mail->Body = $message;

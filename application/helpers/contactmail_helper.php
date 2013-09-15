@@ -28,7 +28,7 @@ function send_email($to, $sender, $subject, $body){
 		$mail->Port = SMTP_PORT;
 		$mail->Username = SMTP_USERNAME;
 		$mail->Password = SMTP_PASSWORD;           
-		$mail->SetFrom($sender, "TommyJams Admin");
+		$mail->SetFrom($sender, SMTP_SENDER);
 		$mail->IsHTML(true);
 		$mail->Subject = $subject;
 		$mail->Body = $message;
