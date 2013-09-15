@@ -528,7 +528,7 @@ class Artist extends Base{
 				</tr>
 			</table>
 			</center>";
-			$this->load->helper('mail');
+			//$this->load->helper('mail');
     		send_email($to, $sender, $subject, $mess);
 			
 			$to = "alerts@tommyjams.com";

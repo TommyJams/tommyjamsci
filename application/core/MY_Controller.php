@@ -902,5 +902,37 @@ class Base extends MY_Controller{
 		redirect(base_url().'index');  // using '/index' doesn't work.
 		exit;
 	}
+
+	public function send_email($to, $sender, $subject, $mess)
+	{
+		$body = "
+			<html>
+			<head>
+			<title>$subject</title>
+			</head>
+			<body>
+			<div style='background:#000; padding:10px;'>
+				<table style='text-align:center; width: 100%; padding:50px; padding-top:20px;'>
+					<tr style='margin-top:20px;'>
+						<img src='http://www.tommyjams.com/beta/images/tjlogo_small.png'>
+					</tr>
+					<tr style='margin-top:50px; background:#ffcc00; padding:10px;'>
+						$mess
+					</tr>
+				</table>
+			</div>
+			</body>
+			</html>
+		";
+
+		//Using codeigniter mail library
+		$this->load->library('email');
+		$this->email->from(SMTP_USERNAME, SMTP_SENDER);
+		$this->email->to($to); 
+		$this->email->subject($subject);
+		$this->email->message($body);
+
+		$this->email->send();
+	}
 }
 ?>
