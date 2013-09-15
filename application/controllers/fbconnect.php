@@ -1,6 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Fbconnect extends CI_Controller{
+class Fbconnect extends Base{
 
   function parse_signed_request($signed_request, $secret) {
         list($encoded_sig, $payload) = explode('.', $signed_request, 2); 
@@ -316,18 +316,16 @@ class Fbconnect extends CI_Controller{
                       $sender = "alerts@tommyjams.com";
                       $subject = "Mailchimp FBConnect failure: $email, Error: $errorMsg";
                       $message = "$email could not be added/updated in the current mailchimp list on fb registration. Please try manually. Error being faced: $errorMsg";
-                      //include("include/mail.php");
-                      $this->load->helper('mail');
-                      send_email($to, $sender, $subject, $message);
+                      
+                      $this->send_email($to, $sender, $subject, $message);
                     }
                                     
                     $to = "alerts@tommyjams.com";
                     $sender = "alerts@tommyjams.com";
                     $subject = "$email joined fbconnect";
                     $message = "$email joined fbconnect";
-                    //include("include/mail.php"); 
-                    $this->load->helper('mail');
-                    send_email($to, $sender, $subject, $message);
+                    
+                    $this->send_email($to, $sender, $subject, $message);
                   } 
                   
                   $q_link = "SELECT * FROM `".DATABASE."`.`members` WHERE fb_id = '$fbid'";

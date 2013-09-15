@@ -162,12 +162,10 @@ class Promoter extends Base{
 					<br>We will keep you updated with any dibs you receive on the gig. You can also monitor them by logging onto your profile on TommyJams and going to the 'My Gigs' section.
 					<br>We wish you all the very best for the gig.<br><br>Happy Jamming,<br>Team TommyJams<br><br></p>";
 			
-		$this->load->helper('mail');
-	    send_email($to, $sender, $subject, $mess);
+		$this->send_email($to, $sender, $subject, $mess);
 
 		$to = "alerts@tommyjams.com";
-		$this->load->helper('mail');
-	    send_email($to, $sender, $subject, $mess);
+		$this->send_email($to, $sender, $subject, $mess);
 
 	    $image="gigs.jpg";
 		
@@ -319,11 +317,10 @@ class Promoter extends Base{
 		$mess="<p style='text-align:left;'>Dear $name,<br><br>Your gig '$gig' has been Updated successfully on TommyJams.		<br>		We will keep you updated with any dibs you receive on the gig. You can also monitor them by logging onto your profile on TommyJams and going to the 'My Gigs' section.		<br>		We wish you all the very best for the gig.		<br><br>		Happy Jamming,		<br>		Team TommyJams		<br><br>		</p>		";
 		$sender = "alerts@tommyjams.com";
 				
-		$this->load->helper('mail');
-	    send_email($to, $sender, $subject, $mess);
+		$this->send_email($to, $sender, $subject, $mess);
 				
 		$to = "alerts@tommyjams.com";
-		send_email($to, $sender, $subject, $mess);
+		$this->send_email($to, $sender, $subject, $mess);
 		
 		$response['id'] = $id;
 		$response['error'] = $error;
@@ -480,11 +477,10 @@ class Promoter extends Base{
 			
 				$sender = "alerts@tommyjams.com";
 				
-				$this->load->helper('mail');
-	            send_email($to, $sender, $subject, $mess);
+				$this->send_email($to, $sender, $subject, $mess);
 				
 				$to = "alerts@tommyjams.com";
-				send_email($to, $sender, $subject, $mess);
+				$this->send_email($to, $sender, $subject, $mess);
 			}	
 		
 			$SQLs = "UPDATE `".DATABASE."`.`transaction` SET status=2 WHERE gig_id='$link' AND status=4";
@@ -531,11 +527,10 @@ class Promoter extends Base{
 					";
 				$sender = "alerts@tommyjams.com";
 				
-				$this->load->helper('mail');
-	            send_email($to, $sender, $subject, $mess);
+				$this->send_email($to, $sender, $subject, $mess);
 				
 				$to = "alerts@tommyjams.com";
-				send_email($to, $sender, $subject, $mess);
+				$this->send_email($to, $sender, $subject, $mess);
 			}
 			
 			$response['linker'] = $link;
@@ -600,11 +595,10 @@ class Promoter extends Base{
 				";
 				$sender = "alerts@tommyjams.com";
 				
-				$this->load->helper('mail');
-	        	send_email($to, $sender, $subject, $mess);
+				$this->send_email($to, $sender, $subject, $mess);
 				
 				$to = "alerts@tommyjams.com";
-				send_email($to, $sender, $subject, $mess);
+				$this->send_email($to, $sender, $subject, $mess);
 			}
 
 			$response['linker'] = $link;
@@ -659,11 +653,10 @@ class Promoter extends Base{
 		";
 		$sender = "alerts@tommyjams.com";
 			
-		$this->load->helper('mail');
-        send_email($to, $sender, $subject, $mess);
+		$this->send_email($to, $sender, $subject, $mess);
 			
 		$to = "alerts@tommyjams.com";
-		send_email($to, $sender, $subject, $mess);
+		$this->send_email($to, $sender, $subject, $mess);
 		
 		$alertMessage = "We shall contact you within 24 hours with a recommendation from among the artists who have applied. Thank you for your patience.";
 		

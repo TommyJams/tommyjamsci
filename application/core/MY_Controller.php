@@ -368,8 +368,7 @@ class Base extends MY_Controller{
 					$subject = "Mailchimp TJ Profile failure: $email, Error: $errorMsg";
 					$message = "$email could not be added/updated in the current mailchimp list on edit profile. Please try manually. Error being faced: $errorMsg";
 
-					$this->load->helper('mail');
-    				send_email($to, $sender, $subject, $mess);
+					$this->send_email($to, $sender, $subject, $mess);
 
 					//'Error: ' . $api->errorMessage;
             		$response['error']=1;
@@ -848,8 +847,7 @@ class Base extends MY_Controller{
 
 				$mess="Gig: $gigName<br>Rating: $gig<br>Comment: $gigc";
 
-				$this->load->helper('mail');
-    			send_email($to, $sender, $subject, $mess);
+				$this->send_email($to, $sender, $subject, $mess);
 
 				$q1 = "SELECT * FROM `".DATABASE."`.`members` WHERE link=$promoter_id";
 				$result_set1 = mysql_query($q1);

@@ -1,6 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-	class Newsletter extends CI_Controller{
+	class Newsletter extends Base{
 	
 		public function validateData(){
 	
@@ -105,8 +105,7 @@
 					$subject = "$email joined mailing list as a fan";
 					$message = "$email joined mailing list as a fan"; 
 					
-					$this->load->helper('mail');
-           			send_email($to, $sender, $subject, $message);
+					$this->send_email($to, $sender, $subject, $message);
 				}  
 			} 
 
