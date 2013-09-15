@@ -295,7 +295,7 @@
         $.ajaxFileUpload({
           url            : '/promoter/setProfilePicture/',
           secureuri      : false,
-          fileElementId  : 'userImage',
+          fileElementId  : 'userfile',
           dataType       : 'json',
           data           : {'type': type},
           success        : function (data, status)

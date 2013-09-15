@@ -977,13 +977,13 @@ class Base extends MY_Controller{
 
 			$this->load->library('upload', $config);
 			error_log('upload: 2');
-			if (!$this->upload->do_upload('userImage'))
+			if (!$this->upload->do_upload())
 			{
 				error_log('upload: 3');
 				$response['error'] = 1;
 				$msg = $this->upload->display_errors('', '');
 				$response['msg'] = $msg;
-
+				error_log('upload: 3_1'.$msg);
 				$this->load->helper('functions');
 				createResponse($response);
 			}

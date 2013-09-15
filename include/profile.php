@@ -45,7 +45,7 @@
                 <tbody>
                     <tr>
                         <td align="center" style="width: 100%;">
-                            <input name="file" id="userImage" type="file" size="50" />
+                            <input name="userfile" id="userfile" type="file" size="50" />
                         </td>
                     </tr>
                     <tr>
