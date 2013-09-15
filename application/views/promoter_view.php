@@ -301,6 +301,7 @@
           success        : function (data, status)
                            {
                               console.log(data.msg);
+                              promoterProfile();
                            }
         });
       }
