@@ -938,5 +938,132 @@ class Base extends MY_Controller{
 
 		$this->email->send();
 	}
+
+	public function setProfilePicture()
+    {
+		$sessionArray = $this->session->all_userdata();
+
+		// SessionID Check
+		if (!isset($sessionArray['session_id'])){
+		session_start();
+		}
+
+		// Promoter Session 
+		elseif(isset($sessionArray['username'])){
+			$username=$sessionArray['username'];
+			$password=md5($sessionArray['password']);
+		}
+
+		// Artist Session 
+		elseif(isset($sessionArray['username_artist'])){
+			$username=$sessionArray['username_artist'];
+			$password=md5($sessionArray['password_artist']);
+		}
+
+
+    	if($_POST['type'] == 'upload')
+    	{
+    		$a=rand(1,10);
+            $usernam=md5($username.$a);
+
+            if(isset($_SESSION['username_artist'])){     $upload_path = '/images/artist/'; }
+            elseif(isset($_SESSION['username'])){     $upload_path = '/images/promoter/'; }
+
+            $config['upload_path'] = $upload_path;
+			$config['allowed_types'] = 'gif|jpg|png|bmp';
+			$config['max_size']  = 1024 * 8;
+			$config['encrypt_name'] = TRUE;
+
+			$this->load->library('upload', $config);
+
+			if (!$this->upload->do_upload('userImage'))
+			{
+				$response['error'] = 1;
+				$msg = $this->upload->display_errors('', '');
+				$response['msg'] = $msg;
+
+				$this->load->helper('functions');
+				createResponse($response);
+			}
+			else
+			{
+				$data = $this->upload->data();
+				//$file_id = $this->files_model->insert_file($data['file_name'], $_POST['title']);
+
+				$filename = $data['file_name'];
+				$query = "UPDATE ".DATABASE.".`members` SET `user`='$filename' WHERE fb_id='$username'";
+                $ress = mysql_query($query);
+                if (!$ress)
+                {
+					$response['error'] = 1;
+					$msg = "Filename could not be saved";
+					$response['msg'] = $msg;
+
+					$this->load->helper('functions');
+					createResponse($response);
+        		}
+                else
+                {
+					$response['error'] = 0;
+					$msg = "File $filename successfully uploaded";
+					$response['msg'] = $msg;
+
+					$this->load->helper('functions');
+					createResponse($response);
+        		}
+			}
+
+
+            /*$filename = $_FILES['file']['name']; 
+            $ext = substr($filename, strpos($filename,'.'), strlen($filename)-1);  
+            $new="$usernam"."$ext";
+           
+            if(!in_array($ext,$allowed_filetypes))
+                die('The file you attempted to upload is not allowed.');
+         
+            if(filesize($_FILES['file']['tmp_name']) > $max_filesize)
+                die('The file you attempted to upload is too large.');
+         
+            if(!is_writable($upload_path))
+                die('You cannot upload to the specified directory, please CHMOD it to 777.');
+			
+            if(move_uploaded_file($_FILES['file']['tmp_name'],$upload_path . $new))
+            {
+                $query = "UPDATE `$database`.`members` SET `user`='$new' WHERE fb_id='$username'";
+                $ress = mysql_query($query);
+                if (!$ress)
+                {die("Database query failed: " . mysql_error());}
+                else
+                {header('Location: ' . $_SERVER['HTTP_REFERER']);exit;}
+                //*****************************
+            }
+
+            else
+                echo 'There was an error during the file upload.  Please try again.'; // It failed :(.
+    	}
+    	*/
+    	}
+    	elseif($_POST['type'] == 'facebook')
+    	{
+	        $query = "UPDATE `$database`.`members` SET `user`='$username' WHERE fb_id='$username'";
+            $ress = mysql_query($query);
+            if (!$ress)
+            {
+				$response['error'] = 1;
+				$response['msg'] = "Database could not be updated";
+
+				$this->load->helper('functions');
+				createResponse($response);
+            }
+            else
+            {
+				$response['error'] = 1;
+				$response['msg'] = "Database updated with facebook id";
+
+				$this->load->helper('functions');
+				createResponse($response);
+            }
+    	}
+    }
 }
 ?>

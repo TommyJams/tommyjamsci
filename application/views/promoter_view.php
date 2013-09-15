@@ -277,7 +277,25 @@
       $.post('promoter/editProfile',{'type': type, 'about': obj.about},editProfileCallback,'json');
     }
 
+    function uploadProfilePicCallback(a)
+    {
+        console.log("Data: ", JSON.stringify(a));
+    }
+    function uploadProfilePic(type)
+    {
+      console.log('type: ',type);
 
+      $.ajaxFileUpload({
+           url            : './promoter/setProfilePicture/',
+           secureuri      : false,
+           fileElementId  : 'userImage',
+           dataType       : 'json',
+           data           : {'type': type},
+           success        : uploadProfilePicCallback
+          });
+      return false;
+      });
+    }
 
     function showGigFeedbackCallback(a)
     {

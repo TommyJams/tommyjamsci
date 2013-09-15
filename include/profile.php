@@ -3,12 +3,26 @@
 	<link rel='stylesheet' href='style/edit.css'>
 	<!-- Include the JS files -->
 
-	<!--<script type="text/javascript">
-		function init() {
-		document.getElementById('loading').style.display = 'none';
-		}
-		window.onload = init();
-	</script>-->
+    <script type="text/javascript">
+        /*function init() {
+        document.getElementById('loading').style.display = 'none';
+        }
+        window.onload = init();*/
+
+        $(function() {
+            $('#profilePicForm').submit(function(e) {
+                e.preventDefault();
+                uploadProfilePic('upload');
+                popup('profil');
+            });
+
+        $(function() {
+            $('#facebookPicForm').submit(function(e) {
+                e.preventDefault();
+                uploadProfilePic('facebook');
+                popup('profil');
+            });
+    </script>
 
  </head>
  <body>
@@ -27,12 +41,12 @@
         <center>
             <h2>Upload your Profile Picture</h2>
         </center>
-        <form action="update.php" method="post" enctype="multipart/form-data">
+        <form action="" method="post" id="profilePicForm" enctype="multipart/form-data">
             <table id="uploadTable" style="margin-top: 30px; width: 100%;">
                 <tbody>
                     <tr>
                         <td align="center" style="width: 100%;">
-                            <input name="file" id="image" type="file" size="50" />
+                            <input name="file" id="userImage" type="file" size="50" />
                         </td>
                     </tr>
                     <tr>
@@ -54,6 +68,12 @@
                             OR
 						</td>
 					</tr>
+                </tbody>
+            </table>
+        </form>
+        <form action="" method="post" id="facebookPicForm" enctype="multipart/form-data">
+            <table id="uploadTable" style="margin-top: 30px; width: 100%;">
+                <tbody>            
 					<tr>
 						<td align="center" style="width: 100%;">
                             <? $username = (json_decode($_POST['json'])->fb_username); ?>
