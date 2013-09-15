@@ -298,7 +298,10 @@
           fileElementId  : 'userImage',
           dataType       : 'json',
           data           : {'type': type},
-          success        : uploadProfilePicCallback
+          success        : function (data, status)
+                           {
+                              console.log(data.msg);
+                           }
         });
       }
     }
