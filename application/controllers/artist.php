@@ -3,23 +3,8 @@
 class Artist extends Base{
 
 	public function mydibs(){
-		ob_start();
-
-		$sessionArray = $this->session->all_userdata();
-
-		if (!isset($sessionArray['session_id'])) {
-			session_start();
-		}
-		if(isset($sessionArray['username_artist']))
-		{
-			$username=$sessionArray['username_artist'];
-			$password=md5($sessionArray['password_artist']);
-		}
-		else
-		{
-			$this->sessionlogout();
-			exit;
-		}
+		
+		$username = checkSession();
 
 		$q2 = "SELECT link FROM `".DATABASE."`.`members` WHERE fb_id='$username'";
 		$result_set2 = mysql_query($q2);	
@@ -77,21 +62,7 @@ class Artist extends Base{
 
 	public function findGigs()
 	{
-		$sessionArray = $this->session->all_userdata();
-
-		if (!isset($sessionArray['session_id'])) {
-			session_start();
-		}
-		if(isset($sessionArray['username_artist']))
-		{
-			$username=$sessionArray['username_artist'];
-			$password=md5($sessionArray['password_artist']);
-		}
-		else
-		{
-			$this->sessionlogout();
-			exit;
-		}
+		$username = checkSession();
 
 		$todayTime = strtotime(date("Y-m-d"));
 
@@ -415,23 +386,9 @@ class Artist extends Base{
 	}
 
 	public function dibAction(){
-		ob_start();
 
-		$sessionArray = $this->session->all_userdata();
+		$username = checkSession();
 
-		if (!isset($sessionArray['session_id'])) {
-			session_start();
-		}
-		if(isset($sessionArray['username_artist']))
-		{
-			$username=$sessionArray['username_artist'];
-			$password=md5($sessionArray['password_artist']);
-		}
-		else
-		{
-			$this->sessionlogout();
-			exit;
-		}
 		$this->load->helper('functions');
 
 		$gigLink = $_POST['gigLink'];
@@ -574,6 +531,38 @@ class Artist extends Base{
 		$response['status']=1;
 		error_log($response['status']);
 		createResponse($response);
+	}
+
+	public function checkSession(){
+
+		$sessionArray = $this->session->all_userdata();
+
+		if(!isset($sessionArray['session_id'])) {
+			session_start();
+		}
+		elseif(isset($sessionArray['username_artist']))
+		{
+			$username=$sessionArray['username_artist'];
+		}
+		else
+		{
+			$this->sessionlogout();
+			exit;
+		}
+		return($username);
+	}
+
+	public function sessionlogout(){
+
+		$sessionArray = $this->session->all_userdata();
+		
+		if (!isset($sessionArray['session_id'])) {
+			session_start();
+		}
+
+		$this->session->sess_destroy();
+		redirect(base_url().'index');  // using '/index' doesn't work.
+		exit;
 	}
 }
 ?>

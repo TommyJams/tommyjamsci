@@ -3,24 +3,10 @@
 class Promoter extends Base{
 
 	public function mygigs(){
-		ob_start();
 
-		$sessionArray = $this->session->all_userdata();
+		$username = checkSession();
 
-		if (!isset($sessionArray['session_id'])) {
-			session_start();
-		}
-		if(isset($sessionArray['username']))
-		{
-			$username=$sessionArray['username'];
-			$password=md5($sessionArray['password']);
-		}
-		else
-		{
-			$this->sessionlogout();
-			exit;
-		}
-
+		// check whether initialization is required.
 		$artist_id = "";
 		$artist_name = "";
 		$num_rows = "";
@@ -79,27 +65,7 @@ class Promoter extends Base{
 
 	public function launchGigFunc(){
 
-		ob_start();
-
-		$sessionArray = $this->session->all_userdata();
-
-		if (!isset($sessionArray['session_id'])){
-			session_start();
-		}
-
-		if(isset($sessionArray['username']))
-		{
-			$username=$sessionArray['username'];
-			$password=md5($sessionArray['password']);
-			$actual_type = 'venue';
-		}
-
-		elseif(isset($sessionArray['username_artist']))
-		{
-			$username=$sessionArray['username_artist'];
-			$password=$sessionArray['password_artist'];
-			$actual_type = 'artist';
-		}
+		$username = checkSession();
 
 		$this->load->helper('functions');
 
@@ -198,18 +164,7 @@ class Promoter extends Base{
 
 	public function updateGigPage(){
 
-		$sessionArray = $this->session->all_userdata();
-
-		if(isset($sessionArray['username']))
-		{
-			$username=$sessionArray['username'];
-			$password=md5($sessionArray['password']);
-		}
-		else
-		{
-			redirect('http://testcodeigniter.azurewebsites.net/index');
-			exit;
-		}
+		$username = checkSession();
 
 		$SQLsa = "SELECT link FROM `".DATABASE."`.`members` WHERE `fb_id`='$username'";
 		$resultsa = mysql_query($SQLsa);
@@ -266,21 +221,7 @@ class Promoter extends Base{
 
 	public function updateGigProfile(){
 
-		ob_start();
-		$sessionArray = $this->session->all_userdata();
-
-		if (!isset($sessionArray['session_id()'])) {
-			session_start();
-		}
-
-		if(!isset($sessionArray['username']))
-		{
-			redirect('http://testcodeigniter.azurewebsites.net/index');
-			exit;
-		}	
-
-		$username=$sessionArray['username'];
-		$password=md5($sessionArray['password']);
+		$username = checkSession();
 
 		$id = $_POST['gigLink'];
 
@@ -331,21 +272,7 @@ class Promoter extends Base{
 
 	public function reactionDib(){
 
-		$sessionArray = $this->session->all_userdata();
-
-		if (!isset($sessionArray['session_id()'])) 
-		{
-			session_start();
-		}
-
-		if(!isset($sessionArray['username']))
-		{
-			redirect('http://testcodeigniter.azurewebsites.net/index');
-			exit;
-		}	
-
-		$username=$sessionArray['username'];
-		$password=md5($sessionArray['password']);
+		$username = checkSession();
 
 		error_log('reactionDib: 1');
 
@@ -668,21 +595,7 @@ class Promoter extends Base{
 
 	public function showDibs(){
 
-		ob_start();
-		$sessionArray = $this->session->all_userdata();
-
-		if (!isset($sessionArray['session_id()'])) {
-			session_start();
-		}
-
-		if(!isset($sessionArray['username']))
-		{
-			redirect('http://testcodeigniter.azurewebsites.net/index');
-			exit;
-		}	
-
-		$username=$sessionArray['username'];
-		$password=md5($sessionArray['password']);
+		$username = checkSession();
 
 		//$link=$_POST["link"]/15999;
 		$linker=$_POST["link"];
@@ -705,6 +618,38 @@ class Promoter extends Base{
 
 		$this->load->helper('functions');
 		createResponse($response);
+	}
+
+	public function checkSession(){
+
+		$sessionArray = $this->session->all_userdata();
+
+		if(!isset($sessionArray['session_id'])) {
+			session_start();
+		}
+		elseif(isset($sessionArray['username']))
+		{
+			$username=$sessionArray['username'];
+		}
+		else
+		{
+			$this->sessionlogout();
+			exit;
+		}
+		return($username);
+	}
+
+	public function sessionlogout(){
+
+		$sessionArray = $this->session->all_userdata();
+		
+		if (!isset($sessionArray['session_id'])) {
+			session_start();
+		}
+
+		$this->session->sess_destroy();
+		redirect(base_url().'index');  // using '/index' doesn't work.
+		exit;
 	}
 }
 ?>	
