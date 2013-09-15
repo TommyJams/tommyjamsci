@@ -9,7 +9,7 @@
         }
         window.onload = init();*/
 
-        $(function() {
+        /*$(function() {
             $('#profilePicForm').submit(function(e) {
                 e.preventDefault();
                 uploadProfilePic('upload');
@@ -21,7 +21,7 @@
                 e.preventDefault();
                 uploadProfilePic('facebook');
                 popup('profil');
-            });
+            });*/
     </script>
 
  </head>
