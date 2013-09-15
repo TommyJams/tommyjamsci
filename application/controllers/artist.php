@@ -33,15 +33,8 @@ class Artist extends Base{
 			$artist_id=$found["link"];
 		}
 
-		if(isset($sessionArray['username_artist']))
-	    {
-	    	$SQLs = "SELECT * FROM `".DATABASE."`.`transaction` WHERE artist_id=$artist_id ORDER BY id DESC";
-	    }
-	 	elseif(isset($sessionArray['username']))
-	    {
-	        $SQLs = "SELECT * FROM `".DATABASE."`.`transaction` WHERE promoter_id=$artist_id ORDER BY id DESC";
-	    }
-	    
+	    $SQLs = "SELECT * FROM `".DATABASE."`.`transaction` WHERE artist_id=$artist_id ORDER BY id DESC";
+	 
 	    $results = mysql_query($SQLs);
 	    
 		while ($a = mysql_fetch_assoc($results))
