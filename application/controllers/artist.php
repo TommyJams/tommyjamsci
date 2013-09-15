@@ -61,10 +61,16 @@ class Artist extends Base{
         	$contact = $b['mobile'];
 
 			$dibRow = array($gig, $city, $formattedDate, $time, $statuss, $promoter, $promoter_name, $contact, $link);
-
 			$response['dibHistory'][] = $dibRow;
+			$error = 0;
 		}	
 
+		if($error != 0)
+		{
+			$error = 1;
+		}	
+
+		$response['error'] = $error;
 		$this->load->helper('functions');
 		createResponse($response);
 	}
