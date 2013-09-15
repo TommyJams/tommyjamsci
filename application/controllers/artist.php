@@ -1,6 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Artist extends Base_Controller{
+class Artist extends base_Controller{
 
 	public function mydibs(){
 		ob_start();
