@@ -1,5 +1,10 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+if (is_readable(FCPATH . 'config.local.php'))
+{
+    include_once(FCPATH . 'config.local.php');
+}
+
 /*
 |--------------------------------------------------------------------------
 | Base Site URL

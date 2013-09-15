@@ -1,5 +1,10 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+if (is_readable(FCPATH . 'config.local.php'))
+{
+    include_once(FCPATH . 'config.local.php');
+}
+
 /*
 |--------------------------------------------------------------------------
 | File and Directory Modes
@@ -82,7 +87,7 @@ define('RADIO_FORM_MSG_API_FAILURE','Sorry. Try again later.');
 define('RADIO_FORM_MSG_DATABASE_INSERT_FAILURE','Sorry. Could not insert into database.');
 define('RADIO_FORM_SEND_MSG_OK','Thank you. Your request has been submitted! You will receive an email from us shortly.');
 
-define('DATABASE','tommyjam_test');
+//define('DATABASE','tommyjam_test');
 
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */
