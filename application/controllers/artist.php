@@ -39,22 +39,13 @@ class Artist extends Base{
 	    }
 	    
 	    $results = mysql_query($SQLs);
+	 /*   $a = mysql_fetch_assoc($results)
 	    
-	    if(!$results)
-	    {
-	    	$gig=""; 
-	    	$city=""; 
-	    	$formattedDate=""; 
-	    	$time=""; 
+	    if(!$a)
+	    { 
 	    	$statuss=""; 
-	    	$promoter=""; 
-	    	$promoter_name=""; 
-	    	$contact="";;
-
-	    	$dibRow = array($gig, $city, $formattedDate, $time, $statuss, $promoter, $promoter_name, $contact);
-
 			$response['dibHistory'][] = $dibRow;
-	    }
+	    }*/
 
 	    else
 	    {        
