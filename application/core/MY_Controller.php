@@ -966,8 +966,8 @@ class Base extends MY_Controller{
     		$a=rand(1,10);
             $usernam=md5($username.$a);
 
-            if(isset($_SESSION['username_artist'])){     $upload_path = './image/artist/'; }
-            elseif(isset($_SESSION['username'])){     $upload_path = './image/promoter/'; }
+            if(isset($sessionArray['username_artist'])){     $upload_path = './image/artist/'; }
+            elseif(isset($sessionArray['username'])){     $upload_path = './image/promoter/'; }
 
             error_log('upload: 1');
             $config['upload_path'] = $upload_path;
