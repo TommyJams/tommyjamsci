@@ -38,6 +38,7 @@ class Artist extends Base{
 	        $SQLs = "SELECT * FROM `".DATABASE."`.`transaction` WHERE promoter_id=$artist_id ORDER BY id DESC";
 	    }
 	    
+	    $error = "";
 	    $results = mysql_query($SQLs);
 	    
 		while ($a = mysql_fetch_assoc($results))
@@ -65,7 +66,7 @@ class Artist extends Base{
 			$error = 0;
 		}	
 
-		if($error != 0)
+		if(isset($error))
 		{
 			$error = 1;
 		}	
