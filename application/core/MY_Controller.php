@@ -178,8 +178,8 @@ class Base extends MY_Controller{
 			{$about="Add details for this section by editing your profile";}
 
 		// Logged in user's profile image
-		if($type=="Promoter"){     $users="/images/promoter/$user";$usersa="/images/promoter/$user";; }
-	 	elseif($type=="Artist"){     $users="/images/artist/$user";$usersa="/images/artist/$user"; }
+		if($type=="Promoter"){     $users="/images/promoter/$user";$usersa="./images/promoter/$user";; }
+	 	elseif($type=="Artist"){     $users="/images/artist/$user";$usersa="./images/artist/$user"; }
 		if(!file_exists($usersa) && $user==""){$users="/images/profile.jpg";}
 		else if(!file_exists($usersa) && $user!=""){$users="https://graph.facebook.com/"."$user/picture?type=large";}
 		error_log('FilePath: '.$usersa);
