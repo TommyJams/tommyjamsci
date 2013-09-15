@@ -92,7 +92,7 @@
         <div id="userStats">
 			<div id="userPic" class="pic">
 				<? if(!isset($_GET['id']))
-                {print("<a href='#' onclick=popup('profil')>");}
+                {print("<a href='#' onclick=bindnpopup()>");}
 				else {print("<a href='#'>");}
 				print ("<img class='userStatsPic' src='$userpic'/>"); ?></a>
 			</div>
