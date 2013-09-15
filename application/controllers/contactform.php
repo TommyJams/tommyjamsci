@@ -53,8 +53,18 @@
 			$sender = "alerts@tommyjams.com";
 			$subject = "TommyJams Landing Page: Contact form";
 			
-			$this->load->helper('contactmail');
-			send_email($to, $sender, $subject, $body);
+			/*$this->load->helper('contactmail');
+			send_email($to, $sender, $subject, $body);*/
+
+			$this->load->library('email');
+			$this->email->from($sender, 'TommyJams Admin');
+			$this->email->to($to); 
+			$this->email->subject($subject);
+			$this->email->message($body);
+
+			$this->email->send();
+			error_log($this->email->print_debugger());
+
 			
 			/*
 			$mail=new PHPMailer();
