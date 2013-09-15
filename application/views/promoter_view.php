@@ -106,7 +106,7 @@
 	  function showProfile(user_id)
     {
       $("#loading-indicator").show();
-      $.post('artist/profilepage',{id: user_id},showProfileCallback,'json');
+      $.post('promoter/profilepage',{id: user_id},showProfileCallback,'json');
       console.log("id: ", user_id);
     }
     function showProfileCallback(a)

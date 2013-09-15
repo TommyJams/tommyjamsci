@@ -33,7 +33,7 @@ class Base extends MY_Controller{
 
 		// Redirecting to index page, if none of the above cases is true.
 		else{
-			redirect('/index');
+			redirect(base_url().'index');
 			exit;
 		}
 
@@ -458,6 +458,7 @@ class Base extends MY_Controller{
 
 		$sessionArray = $this->session->all_userdata();
 
+		$gigSession = "";
 		$user_id = $_POST['id']; 
 		error_log($user_id);
 
