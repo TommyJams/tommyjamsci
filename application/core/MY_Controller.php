@@ -80,7 +80,7 @@ class Base extends MY_Controller{
 		$userRating = "";
 		$users = "";
 		
-		if(isset($sessionArray['username_artist'])  && !isset($_POST['id']))
+		if((isset($sessionArray['username_artist']))  && (!isset($_POST['id'])))
 		{
 			$username=$sessionArray['username_artist'];
 			$password=md5($sessionArray['password_artist']);
@@ -103,7 +103,7 @@ class Base extends MY_Controller{
 				$response=$a;
 			}
 		}
-		else if(isset($sessionArray['username'])  && !isset($_POST["id"]))
+		else if((isset($sessionArray['username']))  && (!isset($_POST["id"])))
 		{
 			$username=$sessionArray['username'];
 			$password=md5($sessionArray['password']);
@@ -128,6 +128,7 @@ class Base extends MY_Controller{
 		else
 		{
 			$link = $_POST['id'];
+			error_log("Link: ".$link);
 			$SQLs = "SELECT * FROM `".DATABASE."`.`members` WHERE link='$link'";
 			$results = mysql_query($SQLs);
 
