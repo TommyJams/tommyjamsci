@@ -40,39 +40,30 @@ class Artist extends Base{
 	    
 	    $results = mysql_query($SQLs);
 	    
-	    if(!$results)
+		while ($a = mysql_fetch_assoc($results))
 	    {
-	    	$noValue = 0;
-			$response['noValue'] = $noValue;
-	    }
+		    $gig_id=$a["gig_id"];
+		    $id=$a["id"];$gig=$a["gig_name"];$promoter=$a["promoter_id"];$promoter_name=$a["promoter_name"];
+		    $artist=$a["artist_id"];$artist_name=$a["artist_name"];
+		    $link=$a["gig_id"];$statuss=$a["status"];
 
-	    else
-	    {        
-	    	while ($a = mysql_fetch_assoc($results))
-	    	{
-	        	$gig_id=$a["gig_id"];
-	        	$id=$a["id"];$gig=$a["gig_name"];$promoter=$a["promoter_id"];$promoter_name=$a["promoter_name"];
-	        	$artist=$a["artist_id"];$artist_name=$a["artist_name"];
-	        	$link=$a["gig_id"];$statuss=$a["status"];
+        	$SQLe = "SELECT * FROM `".DATABASE."`.`shop` WHERE link=$link";
+        	$resulte = mysql_query($SQLe);
+        	while ($f = mysql_fetch_assoc($resulte))
+        	{
+            	$city=$f["venue_city"];$state=$f["venue_state"];$time=$f["venue_time"];$date=$f["venue_date"];
+        	}
+			$formattedDate = date('d-m-Y',strtotime($date));
 
-	        	$SQLe = "SELECT * FROM `".DATABASE."`.`shop` WHERE link=$link";
-	        	$resulte = mysql_query($SQLe);
-	        	while ($f = mysql_fetch_assoc($resulte))
-	        	{
-	            	$city=$f["venue_city"];$state=$f["venue_state"];$time=$f["venue_time"];$date=$f["venue_date"];
-	        	}
-				$formattedDate = date('d-m-Y',strtotime($date));
+			$SQLe = "SELECT mobile FROM `".DATABASE."`.`members` WHERE link=$promoter";
+        	$resulte = mysql_query($SQLe);
+        	$b = mysql_fetch_assoc($resulte);
+        	$contact = $b['mobile'];
 
-				$SQLe = "SELECT mobile FROM `".DATABASE."`.`members` WHERE link=$promoter";
-            	$resulte = mysql_query($SQLe);
-            	$b = mysql_fetch_assoc($resulte);
-            	$contact = $b['mobile'];
+			$dibRow = array($gig, $city, $formattedDate, $time, $statuss, $promoter, $promoter_name, $contact, $link);
 
-				$dibRow = array($gig, $city, $formattedDate, $time, $statuss, $promoter, $promoter_name, $contact, $link);
-
-				$response['dibHistory'][] = $dibRow;
-			}	
-		}
+			$response['dibHistory'][] = $dibRow;
+		}	
 
 		$this->load->helper('functions');
 		createResponse($response);

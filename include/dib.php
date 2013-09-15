@@ -23,10 +23,8 @@
                 <span class="gigs" style="padding:10px;" >
                     <div class='gigsTableItemContainer'>
                         <?php 
-                        $noValue = (json_decode($_POST['json'])->noValue);
-
-                        if($noValue != 0){
                         $dibsHistory = (json_decode($_POST['json'])->dibHistory);
+                        if(isset($dibsHistory)){
                         foreach($dibsHistory as $row){ ?>
                         <?
                         $gig=$row[0];
