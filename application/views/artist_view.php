@@ -30,6 +30,7 @@
 	<script type="text/javascript" src="<?php echo base_url();?>script/h5f.js"></script>
 	<script type="text/javascript" src="<?php echo base_url();?>script/functions.js"></script>
 	<script type="text/javascript" src="<?php echo base_url();?>script/csspopup.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>script/ajaxfileupload.js"></script>
 	<!--contains document ready function-->
     <script language="javascript">
 	/*
@@ -183,6 +184,36 @@
     {
     	$("#loading-indicator").show();
 		$.post('artist/dibAction',{'gigLink': link},dibActionCallback,'json');
+    }
+
+    function uploadProfilePicCallback(a)
+    {
+        console.log("Data: ", JSON.stringify(a));
+        artistProfile();
+    }
+    function uploadProfilePic(type)
+    {
+      console.log('type: ',type);
+
+      if(type == 'facebook')
+      {
+        $.post('/artist/setProfilePicture',{'type': type},uploadProfilePicCallback,'json');      
+      }
+      else
+      {
+        $.ajaxFileUpload({
+          url            : '/artist/setProfilePicture/',
+          secureuri      : false,
+          fileElementId  : 'userfile',
+          dataType       : 'json',
+          data           : {'type': type},
+          success        : function (data, status)
+                           {
+                              console.log(data.msg);
+                              artistProfile();
+                           }
+        });
+      }
     }
 
     function showGigFeedbackCallback(a)
