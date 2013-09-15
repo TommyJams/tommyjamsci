@@ -368,14 +368,14 @@ class Fbconnect extends Base{
             {
               //header("Location: promoter.php?success=1");
               //header("Location: promoter");
-              redirect('http://testcodeigniter.azurewebsites.net/promoter');
+              redirect(base_url().'promoter');
               exit;
             }
             elseif($sessionArray['username_artist'])
             {
               //header("Location: artist.php?success=1");
               //header("Location: artist");
-              redirect('http://testcodeigniter.azurewebsites.net/artist');
+              redirect(base_url().'artist');
               exit;
             }
             else
@@ -427,12 +427,8 @@ class Fbconnect extends Base{
                                   'password'  => $found_admin["password"]
                                   );
                     $this->session->set_userdata($newdata);
-                    //$_SESSION['username'] = $fbid;
-                    //$_SESSION['password'] = $found_admin["password"];
                     {   
-                      //header("Location: promoter.php?success=1");
-                      //header("Location: promoter");
-                      redirect('http://testcodeigniter.azurewebsites.net/promoter');
+                      redirect(base_url().'promoter');
 
                       exit;
                     }
@@ -445,28 +441,22 @@ class Fbconnect extends Base{
                                   'password_artist'  => $found_admin["password"]
                                   );
                     $this->session->set_userdata($newdata);
-                    //$_SESSION['username_artist'] = $fbid;
-                    //$_SESSION['password_artist'] = $found_admin["password"];
                     {
-                      //header("Location: artist.php?success=1");
-                      //header("Location: artist");
-                      //$back_to = 'http://testcodeigniter.azurewebsites.net/artist';
-                      redirect('http://testcodeigniter.azurewebsites.net/artist');
+                      redirect(base_url().'artist');
                       exit;
                     }
                   }
                 }
                 else
                 {
-                  //header("Location: index");
-                  redirect('http://testcodeigniter.azurewebsites.net/index');
+      
+                  redirect(base_url().'artist');
                   exit;
                 }
               }
               else
               {
-                //header("Location: index");
-                redirect('http://testcodeigniter.azurewebsites.net/index');
+                redirect(base_url().'index'); 
                 exit;
               }
             } 
@@ -477,23 +467,17 @@ class Fbconnect extends Base{
             //default behaviour when landing on fbconnect.php $this->session->userdata('session_id');
             if($sessionArray['username'])
             {
-              //header("Location: promoter.php?success=1");
-              //header("Location: promoter");
-              redirect('http://testcodeigniter.azurewebsites.net/promoter');
+              redirect(base_url().'promoter');
               exit;
             }
             elseif($sessionArray['username_artist'])
             {
-              //header("Location: artist.php?success=1");
-              //header("Location: artist");
-              redirect('http://testcodeigniter.azurewebsites.net/promoter');
+              redirect(base_url().'artist');
               exit;
             }
             else
             {
-              //header("Location: index.php");
-              //header("Location: index");
-              redirect('http://testcodeigniter.azurewebsites.net/index');
+              redirect(base_url().'index');
               exit;
             }           
           }
