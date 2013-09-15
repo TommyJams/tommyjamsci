@@ -3,6 +3,7 @@
 class MY_Controller extends CI_Controller {
 
     public function __construct() {
+        $this->load->library('email');
         parent::__construct();
     }
 }
@@ -930,7 +931,6 @@ class Base extends MY_Controller{
 		";
 
 		//Using codeigniter mail library
-		$this->load->library('email');
 		$this->email->from(SMTP_USERNAME, SMTP_SENDER);
 		$this->email->to($to); 
 		$this->email->subject($subject);
