@@ -32,14 +32,14 @@
 	<script type="text/javascript" src="<?php echo base_url();?>script/csspopup.js"></script>
 	<!--contains document ready function-->
     <script language="javascript">
-	
+	/*
     function loadblog(a) 
     {
         /*document.getElementById('lefty').style.display="none";
         document.getElementById('lefty1').style.display="block";
         link = 'include/blog/wp-login.php';
-        parent.leftframe.location.href=link; */
-    } 
+        parent.leftframe.location.href=link; 
+    } */
     </script>
     <!--<script language="javascript"> 
         link = a+".php?include="+a; 
@@ -47,7 +47,7 @@
     </script>-->
     
     <script>
-    function loadframe(a) 
+ /*   function loadframe(a) 
     {
 		$("#loading-indicator").show();
         if(a=="left"){  $("#lefty").load("include/profile.php");}
@@ -63,7 +63,7 @@
     {
 		$("#loading-indicator").show();
 		$("#lefty").load("include/profile.php?edit=1");
-    }
+    }*/
 
     function gigProfileCallback(a) 
     {
