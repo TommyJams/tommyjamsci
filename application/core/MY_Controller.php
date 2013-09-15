@@ -963,22 +963,23 @@ class Base extends MY_Controller{
 
     	if($_POST['type'] == 'upload')
     	{
-    		error_log('type: upload');
     		$a=rand(1,10);
             $usernam=md5($username.$a);
 
             if(isset($_SESSION['username_artist'])){     $upload_path = '/images/artist/'; }
             elseif(isset($_SESSION['username'])){     $upload_path = '/images/promoter/'; }
 
+            error_log('upload: 1');
             $config['upload_path'] = $upload_path;
 			$config['allowed_types'] = 'gif|jpg|png|bmp';
 			$config['max_size']  = 1024 * 8;
 			$config['encrypt_name'] = TRUE;
 
 			$this->load->library('upload', $config);
-
+			error_log('upload: 2');
 			if (!$this->upload->do_upload('userImage'))
 			{
+				error_log('upload: 3');
 				$response['error'] = 1;
 				$msg = $this->upload->display_errors('', '');
 				$response['msg'] = $msg;
@@ -988,6 +989,7 @@ class Base extends MY_Controller{
 			}
 			else
 			{
+				error_log('upload: 4');
 				$data = $this->upload->data();
 				//$file_id = $this->files_model->insert_file($data['file_name'], $_POST['title']);
 
@@ -996,6 +998,7 @@ class Base extends MY_Controller{
                 $ress = mysql_query($query);
                 if (!$ress)
                 {
+                	error_log('upload: 5');
 					$response['error'] = 1;
 					$msg = "Filename could not be saved";
 					$response['msg'] = $msg;
@@ -1005,6 +1008,7 @@ class Base extends MY_Controller{
         		}
                 else
                 {
+                	error_log('upload: 6');
 					$response['error'] = 0;
 					$msg = "File $filename successfully uploaded";
 					$response['msg'] = $msg;
