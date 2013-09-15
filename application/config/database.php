@@ -1,4 +1,10 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+if (is_readable(FCPATH . 'config.local.php'))
+{
+    include_once(FCPATH . 'config.local.php');
+}
+
 /*
 | -------------------------------------------------------------------
 | DATABASE CONNECTIVITY SETTINGS
@@ -48,11 +54,11 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'tommyjamstest.cloudapp.net';
-$db['default']['username'] = 'tommyjamslinux';
-$db['default']['password'] = '1tommyblah';
-$db['default']['database'] = 'tommyjam_test';
-$db['default']['dbdriver'] = 'mysql';
+$db['default']['hostname'] = DATABASE_HOSTNAME;
+$db['default']['username'] = DATABASE_USERNAME;
+$db['default']['password'] = DATABASE_PASSWORD;
+$db['default']['database'] = DATABASE;
+$db['default']['dbdriver'] = DATABASE_DRIVER;
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
 $db['default']['db_debug'] = TRUE;
