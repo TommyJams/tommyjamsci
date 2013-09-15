@@ -35,6 +35,7 @@
 	  <script type="text/javascript" src="<?php echo base_url();?>script/h5f.js"></script>
 	  <script type="text/javascript" src="<?php echo base_url();?>script/functions.js"></script>
 	  <script type="text/javascript" src="<?php echo base_url();?>script/csspopup.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>script/ajaxfileupload.js"></script>
     <script language="javascript"> 
 
     function loadblog(a) 
@@ -277,7 +278,7 @@
       $.post('promoter/editProfile',{'type': type, 'about': obj.about},editProfileCallback,'json');
     }
 
-    /*function uploadProfilePicCallback(a)
+    function uploadProfilePicCallback(a)
     {
         console.log("Data: ", JSON.stringify(a));
     }
@@ -295,7 +296,7 @@
           });
       return false;
       });
-    }*/
+    }
 
     function showGigFeedbackCallback(a)
     {
