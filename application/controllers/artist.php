@@ -568,7 +568,6 @@ class Artist extends Base{
 
 			$this->load->helper('functions');
 			$response['status']=1;
-			error_log("Hello: ".$response['status']);
 			createResponse($response);
 		}
 
