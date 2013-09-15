@@ -277,7 +277,7 @@
       $.post('promoter/editProfile',{'type': type, 'about': obj.about},editProfileCallback,'json');
     }
 
-    function uploadProfilePicCallback(a)
+    /*function uploadProfilePicCallback(a)
     {
         console.log("Data: ", JSON.stringify(a));
     }
@@ -295,7 +295,7 @@
           });
       return false;
       });
-    }
+    }*/
 
     function showGigFeedbackCallback(a)
     {

@@ -68,6 +68,12 @@
                             OR
 						</td>
 					</tr>
+                </tbody>
+            </table>
+        </form>
+        <form action="" method="post" id="facebookPicForm" enctype="multipart/form-data">
+            <table id="uploadTable" style="margin-top: 30px; width: 100%;">
+                <tbody>            
 					<tr>
 						<td align="center" style="width: 100%;">
                             <? $username = (json_decode($_POST['json'])->fb_username); ?>
