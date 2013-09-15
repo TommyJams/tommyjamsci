@@ -19,7 +19,7 @@ if (is_readable(FCPATH . 'config.local.php'))
 | path to your installation.
 |
 */
-$config['base_url']	= '';
+$config['base_url']	= 'http://testcodeigniter.azurewebsites.net';
 
 /*
 |--------------------------------------------------------------------------
