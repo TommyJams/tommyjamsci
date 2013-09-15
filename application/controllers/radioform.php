@@ -1,6 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-	class Radioform extends CI_Controller{
+	class Radioform extends Base{
 
 		public function validateDetails(){
 			
@@ -103,8 +103,7 @@
 				$message = "$email submitted RadioOne (Artist)";
 				$sender = "alerts@tommyjams.com";
 
-				$this->load->helper('mail');
-           		send_email($to, $sender, $subject, $message);
+				$this->send_email($to, $sender, $subject, $message);
 			}
 	
 			$response['error']=0;
