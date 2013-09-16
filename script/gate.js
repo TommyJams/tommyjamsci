@@ -67,14 +67,12 @@ $(document).ready(function()
 	/****************************************************************************/
 	window.fbAsyncInit = function() 
 	{
-		var channel = "//" + <?php echo base_url();?> + "/channel.html";
-
 		// init the FB JS SDK
 		FB.init({
 		  //appId      : '484562291630345', // App ID from the App Dashboard
 		  appId      : '217493645081899', 
 		  //channelUrl : '//WWW.TOMMYJAMS.COM/BETA/channel.html', // Channel File for x-domain communication
-		  channelUrl : channel,
+		  channelUrl : '//www.testcodeigniter.azurewebsites.net/channel.html',
 		  status     : true, // check the login status upon init?
 		  cookie     : true, // set sessions cookies to allow your server to access the session?
 		  oauth		 : true, // enable OAuth 2.0
