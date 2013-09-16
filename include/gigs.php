@@ -75,7 +75,7 @@
 					<? 
                         if($gigStatus == 2)
                         {
-                            print("<a href='javascript:;'  onclick=popup('profil')>");
+                            print("<a href='javascript:;'  onclick=bindnpopup()>");
                         }
 					    else 
                         { 
