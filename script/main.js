@@ -472,5 +472,5 @@
 
 	function facebookLoginCallback()
 	{
-		window.location = "base_url().'fbconnect/registerMethod/preregistered'";
+		window.location = "/fbconnect/registerMethod/preregistered";
 	}
