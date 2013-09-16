@@ -1,6 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Links extends CI_Controller{
+class Links extends Base{
 
 	public function aboutus(){
 		$this->load->view('links/aboutus');
@@ -56,8 +56,7 @@ class Links extends CI_Controller{
 		$Template=new Template($values,'default.php');
 		$body=$Template->output();
 			
-		$this->load->helper('contactmail');
-	    $error = send_email($to, $sender, $subject, $body);
+	    $error = $this->send_email($to, $sender, $subject, $body);
 
 	   	if($error)
 	    	$err = 0;
