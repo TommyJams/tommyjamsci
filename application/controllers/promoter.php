@@ -651,5 +651,56 @@ class Promoter extends Base{
 		redirect(base_url().'index');  // using '/index' doesn't work.
 		exit;
 	}
+
+	public function setGigPicture(){
+        
+        $username = $this->checkSession();
+
+        $link = $_POST['link'];
+
+        $config['upload_path'] = "./images/gig";
+        $config['allowed_types'] = 'gif|jpg|png|bmp';
+        $config['max_size']  = 1024 * 8;
+        $config['encrypt_name'] = TRUE;
+
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload())
+        {
+            $response['error'] = 1;
+            $msg = $this->upload->display_errors('', '');
+            $response['msg'] = $msg;
+            $this->load->helper('functions');
+            createResponse($response);
+        }
+        else
+        {
+            $data = $this->upload->data();
+            //$file_id = $this->files_model->insert_file($data['file_name'], $_POST['title']);
+
+            $filename = $data['file_name'];
+            $query = "UPDATE ".DATABASE.".`shop` SET `image`='$filename' WHERE link='$link'";
+            $ress = mysql_query($query);
+            if (!$ress)
+            {
+                $response['error'] = 1;
+                $msg = "Filename could not be saved";
+                $response['msg'] = $msg;
+
+                $this->load->helper('functions');
+                createResponse($response);
+            }
+            else
+            {
+                $response['error'] = 0;
+                $msg = "File $filename successfully uploaded";
+                $response['msg'] = $msg;
+
+                $this->load->helper('functions');
+                createResponse($response);
+            }
+        }
+    }
+
 }
 ?>	

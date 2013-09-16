@@ -323,6 +323,24 @@
       }
     }
 
+    function uploadGigPic(link)
+    {
+      console.log('link: ',link);
+
+      $.ajaxFileUpload({
+        url            : '/promoter/setGigPicture/',
+        secureuri      : false,
+        fileElementId  : 'userfile',
+        dataType       : 'json',
+        data           : {'link': link},
+        success        : function (data, status)
+                         {
+                            console.log(data.msg);
+                            gigProfile(link);
+                         }
+      });
+    }
+
     function showGigFeedbackCallback(a)
     {
         console.log("Data: ", JSON.stringify(a));

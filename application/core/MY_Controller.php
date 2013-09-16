@@ -484,7 +484,7 @@ class Base extends MY_Controller{
 			$image="gigs.jpg";
 		}
 
-		$gigs="images/gig/$image";
+		$gigs="/images/gig/$image";
 		$response['gigs'] = $gigs;
 
 		$todayTime = strtotime(date("Y-m-d"));
@@ -986,9 +986,6 @@ class Base extends MY_Controller{
 
     	if($_POST['type'] == 'upload')
     	{
-    		$a=rand(1,10);
-            $usernam=md5($username.$a);
-
             if(isset($sessionArray['username_artist'])){     $upload_path = './images/artist/'; }
             elseif(isset($sessionArray['username'])){     $upload_path = './images/promoter/'; }
 
@@ -1034,36 +1031,6 @@ class Base extends MY_Controller{
 					createResponse($response);
         		}
 			}
-
-
-            /*$filename = $_FILES['file']['name']; 
-            $ext = substr($filename, strpos($filename,'.'), strlen($filename)-1);  
-            $new="$usernam"."$ext";
-           
-            if(!in_array($ext,$allowed_filetypes))
-                die('The file you attempted to upload is not allowed.');
-         
-            if(filesize($_FILES['file']['tmp_name']) > $max_filesize)
-                die('The file you attempted to upload is too large.');
-         
-            if(!is_writable($upload_path))
-                die('You cannot upload to the specified directory, please CHMOD it to 777.');
-			
-            if(move_uploaded_file($_FILES['file']['tmp_name'],$upload_path . $new))
-            {
-                $query = "UPDATE `$database`.`members` SET `user`='$new' WHERE fb_id='$username'";
-                $ress = mysql_query($query);
-                if (!$ress)
-                {die("Database query failed: " . mysql_error());}
-                else
-                {header('Location: ' . $_SERVER['HTTP_REFERER']);exit;}
-                //*****************************
-            }
-
-            else
-                echo 'There was an error during the file upload.  Please try again.'; // It failed :(.
-    	}
-    	*/
     	}
     	elseif($_POST['type'] == 'facebook')
     	{

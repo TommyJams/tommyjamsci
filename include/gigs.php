@@ -2,8 +2,26 @@
 <head>
 	<link rel='stylesheet' href='style/edit.css'>
 	<!-- Include the JS files --> 
+
+    <script type="text/javascript">
+
+        function bindnpopup()
+        {
+            popup('profil');
+
+            $('#gigsPicForm').bind('submit',function(e) {
+                e.preventDefault();
+                var link = document.getElementById('gigLink').value;
+                uploadGigPic(link);
+                popup('profil');
+            });
+        }
+    </script>
+
 </head>
  <body>
+    <?php $link = (json_decode($_POST['json'])->link); ?>
+    <?php $gigStatus = (json_decode($_POST['json'])->gigStatus); ?>
     <div id="blanket" style="display:none;
                             background-color:#111;
                             opacity: 0.65;
@@ -16,17 +34,17 @@
                             "/>
 
 	<div id="profil" style="display:none; ">
-        <a id="loginBoxClose" href="#" onClick="popup('profil')">
+        <a id="loginBoxClose" href="javascript:;" onClick="popup('profil')">
 		</a>
         <center><h2>Upload gig logo</h2></center>
-        <?php $link = (json_decode($_POST['json'])->link); ?>
         
-        <form action="update.php?gig=pic&pic=<? print("$link"); ?>" method="post" enctype="multipart/form-data">
+        <form action="" method="post" id="gigsPicForm" enctype="multipart/form-data">
             <table style="margin-top: 30px; width: 100%;">
                 <tbody>
                     <tr>
                         <td>
-                            <input name="gigs" id="image" type="file" size="50" />
+                            <input name="gigLink"  id="gigLink"  type="hidden" value="<? print($link);?>"/>
+                            <input name="userfile" id="userfile" type="file" size="50" />
                         </td>
                     </tr>
                     <tr>
@@ -54,15 +72,14 @@
                 <div id="userPic" class="pic">
 
                     <?php $gigs = (json_decode($_POST['json'])->gigs);?>
-                    <?php $gigSession = (json_decode($_POST['json'])->gigSession); ?>
 					<? 
-                        if($gigSession != 1)
+                        if($gigStatus == 2)
                         {
-                            print("<a href='#'  onclick=popup('profil')>");
+                            print("<a href='javascript:;'  onclick=popup('profil')>");
                         }
 					    else 
                         { 
-                            print("<a href='#'>");
+                            print("<a href='javascript:;'>");
                         }
                         print ("<img src='$gigs' class='userStatsPic' />"); 
                     ?>
@@ -121,7 +138,6 @@
                     <div class="medals" style="width:35%; height: auto; float:right; position:relative; top:30%; margin-top:-35px;">
                         <div id="gigStatus" style="width:auto; height:auto; margin:20px auto; position:relative;">
 						<center>
-                        <?php   $gigStatus = (json_decode($_POST['json'])->gigStatus); ?>
                         <?	
                         if ($gigStatus == 1) // Gig is booked
                         {
@@ -138,9 +154,9 @@
                         elseif($gigSession == 1)
                         { 
                             $statuss=$found["status"];
-                            if($gigStatus == 3){print("<a href='#' id='addnew' style='background: #0a0;'>Accepted</a>");}
-                            elseif($gigStatus == 4){print("<a href='#' id='addnew' style='background: #a00'>Rejected</a>");}
-                            elseif($gigStatus == 5){print("<a href='#' id='addnew' style='background: #282828;'>Pending</a>");}
+                            if($gigStatus == 3){print("<a href='javascript:;' id='addnew' style='background: #0a0;'>Accepted</a>");}
+                            elseif($gigStatus == 4){print("<a href='javascript:;' id='addnew' style='background: #a00'>Rejected</a>");}
+                            elseif($gigStatus == 5){print("<a href='javascript:;' id='addnew' style='background: #282828;'>Pending</a>");}
                         
 					        elseif($gigStatus == 6)
 						    {
