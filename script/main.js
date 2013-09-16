@@ -472,5 +472,5 @@
 
 	function facebookLoginCallback()
 	{
-		window.location = "http://testcodeigniter.azurewebsites.net/fbconnect/registerMethod/preregistered";
+		window.location = "base_url().'fbconnect/registerMethod/preregistered'";
 	}

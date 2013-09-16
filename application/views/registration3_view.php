@@ -8,5 +8,5 @@ You are successfully registered
   <tr><td>City</td><td><?php echo $city;?></td></tr>
 </table>
 <br><br><br>
-<center><a href='http://testcodeigniter.azurewebsites.net/fbconnect/registerMethod/preregistered' 
+<center><a href='base_url().'fbconnect/registerMethod/preregistered'' 
   style='width:120px; height:20px; background:#ffcc00;'>Continue</a></center>

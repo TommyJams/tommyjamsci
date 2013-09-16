@@ -112,7 +112,7 @@
 						</td>
 					</tr>
 				</table>*/
-				print("<div class='fb-login-button' size='large' onlogin=facebookLoginCallback(); registration-url='http://testcodeigniter.azurewebsites.net/fbconnect/registerMethod/noregister'>
+				print("<div class='fb-login-button' size='large' onlogin=facebookLoginCallback(); registration-url='base_url().'fbconnect/registerMethod/noregister''>
 				</div>");
 			}
 			?>

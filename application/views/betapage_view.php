@@ -161,7 +161,7 @@
                 Login With Facebook
             </h3>
 			<div id="loginBoxDetails">
-				<div class='fb-login-button'  fb_only='true' fb_register='true' size='xlarge' onlogin=facebookLoginCallback(); registration-url='http://testcodeigniter.azurewebsites.net/fbconnect/registerMethod/noregister'></div>
+				<div class='fb-login-button'  fb_only='true' fb_register='true' size='xlarge' onlogin=facebookLoginCallback(); registration-url='base_url().'fbconnect/registerMethod/noregister''></div>
 			</div>
         </center>
     </div>
