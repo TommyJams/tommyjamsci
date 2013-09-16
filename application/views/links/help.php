@@ -28,12 +28,12 @@
         if(a == 1)
         {
             alert('Sorry! There was some error while processing your request. Please try again.');
-            window.location = "base_url().'help'"; 
+            window.location = "/help"; 
         }
         else
         {
 	   	   alert('Your request has been received. We will contact you shortly.');
-		   window.location = "base_url().'help'";  	
+		   window.location = "/help";  	
   	    }
     }
     
