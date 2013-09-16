@@ -359,22 +359,14 @@ class Fbconnect extends Base{
           }   
 
           elseif ($registrationParam=='preregistered') //Existing user
-          {
-            /*$data['val']=4;
-            $data['mess']=$this->load->view('registration4_view', NULL, TRUE);
-            $this->load->view('fbConnect_view', $data);*/
-            
+          { 
             if($sessionArray['username'])
             {
-              //header("Location: promoter.php?success=1");
-              //header("Location: promoter");
               redirect(base_url().'promoter');
               exit;
             }
             elseif($sessionArray['username_artist'])
             {
-              //header("Location: artist.php?success=1");
-              //header("Location: artist");
               redirect(base_url().'artist');
               exit;
             }
@@ -449,7 +441,6 @@ class Fbconnect extends Base{
                 }
                 else
                 {
-      
                   redirect(base_url().'artist');
                   exit;
                 }
