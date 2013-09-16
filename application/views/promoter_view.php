@@ -218,6 +218,7 @@
     function recommendArtistCallback(a)
     {
       console.log("Alert Message: ", JSON.stringify(a));
+      $("#loading-indicator").hide();
       alert(a);
     }
     function recommendArtist(id)
