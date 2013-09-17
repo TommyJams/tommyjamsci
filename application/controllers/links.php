@@ -25,7 +25,7 @@ class Links extends Base{
 		return($username);
 	}
 
-	function createResponseData($response)
+	public function createResponseData($response)
     {
         return(json_encode($response));
     }
@@ -59,7 +59,7 @@ class Links extends Base{
 	    	$response = $a;
 	    }
 
-	    $data = createResponseData($response);
+	    $data = $this->createResponseData($response);
 		$name = 'userprofile.pdf';
 
 	/*	$data = file_get_contents("kit/press_kit.zip"); // Read the file's contents
