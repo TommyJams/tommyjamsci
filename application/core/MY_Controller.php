@@ -521,16 +521,13 @@ class Base extends MY_Controller{
 			$response['artist_booked_name'] = $artist_booked_name;
 
 			$gigStatus = 1;
-			$response['gigStatus'] = $gigStatus;	
-			$yes = 1;	
+			$response['gigStatus'] = $gigStatus;		
 	    }
-
 		elseif($promoter==$prolink)
 		{
 			$gigStatus = 2;
 			$response['gigStatus'] = $gigStatus;
 		}
-	    
 	    elseif(isset($sessionArray['username_artist']))
 	    { 
 	    	$gigSession = 1;
