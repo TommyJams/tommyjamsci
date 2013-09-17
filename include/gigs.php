@@ -256,6 +256,7 @@
 	<script LANGUAGE="JavaScript">
 	function confirmSubmit(link)
 	{
+        console.log("Link Value: ", link);
 		var agree=confirm("Are you sure you wish to call dibs for this gig? The host will receive the dibs and choose an artist. Please note, these dibs are not cancellable.");
 		if (agree)
 			dibAction(link);
