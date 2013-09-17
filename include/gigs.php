@@ -22,6 +22,7 @@
  <body>
     <?php $link = (json_decode($_POST['json'])->link); ?>
     <?php $gigStatus = (json_decode($_POST['json'])->gigStatus); ?>
+    <?php $gigSession = (json_decode($_POST['json'])->gigSession); ?>
     <div id="blanket" style="display:none;
                             background-color:#111;
                             opacity: 0.65;
@@ -153,7 +154,6 @@
 						}
                         elseif($gigSession == 1)
                         { 
-                            $statuss=$found["status"];
                             if($gigStatus == 3){print("<a href='javascript:;' id='addnew' style='background: #0a0;'>Accepted</a>");}
                             elseif($gigStatus == 4){print("<a href='javascript:;' id='addnew' style='background: #a00'>Rejected</a>");}
                             elseif($gigStatus == 5){print("<a href='javascript:;' id='addnew' style='background: #282828;'>Pending</a>");}
