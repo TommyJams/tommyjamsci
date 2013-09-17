@@ -56,9 +56,14 @@ class Links extends Base{
 	    	$response = $a;
 	    }
 
-	    $data = $this->createResponseData($response);
+	    $details = $this->createResponseData($response);
 	    error_log("User Data: ".$data);
-		$name = 'userprofile.txt';
+
+	    $this->load->helper(array('dompdf', 'file'));
+     	// page info here, db calls, etc.     
+     	
+     	$data = pdf_create($details, '', false);
+     	write_file('userprofile', $data);
 
 	/*	$data = file_get_contents("kit/press_kit.zip"); // Read the file's contents
 		$name = 'press_kit.zip';*/
