@@ -183,6 +183,7 @@
     function dibAction(link)
     {
     	$("#loading-indicator").show();
+        console.log("Link ID: ", link);
 		$.post('artist/dibAction',{'gigLink': link},dibActionCallback,'json');
     }
 
