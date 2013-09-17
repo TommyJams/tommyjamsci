@@ -177,7 +177,8 @@
                             ?>
                                 <?php $link = (json_decode($_POST['json'])->link); ?> 
                                 <form  action="" method="post">
-                                    <input id="dibStatusButton" name="dib" type="submit" value="DIB" onClick="confirmSubmit('<? print("$link"); ?>')"/>
+                                    <a href='javascript:;' name="dib" id="dibStatusButton" onClick="showDibReaction('<?print("$link");?>');">DIB</a>
+                                 <!--   <input id="dibStatusButton" name="dib" type="submit" value="DIB" onClick="confirmSubmit('<?// print("$link"); ?>')"/> -->
                                 </form> 
                             <?
                             }
