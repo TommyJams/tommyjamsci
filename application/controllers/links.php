@@ -53,15 +53,12 @@ class Links extends Base{
 		$results = mysql_query($q2);
 		while ($a = mysql_fetch_assoc($results))
 	    {
-	    	$type=$a["type"]; $name=$a["name"]; $genre=$a["genre"]; $gender=$a["gender"];
-	    	$dob=$a["dob"]; $about=$a["about"];
-
 	    	$response = $a;
 	    }
 
 	    $data = $this->createResponseData($response);
 	    error_log("User Data: ".$data);
-		$name = 'userprofile.pdf';
+		$name = 'userprofile.txt';
 
 	/*	$data = file_get_contents("kit/press_kit.zip"); // Read the file's contents
 		$name = 'press_kit.zip';*/
