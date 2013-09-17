@@ -60,6 +60,7 @@ class Links extends Base{
 	    }
 
 	    $data = $this->createResponseData($response);
+	    error_log("User Data: ".$data);
 		$name = 'userprofile.pdf';
 
 	/*	$data = file_get_contents("kit/press_kit.zip"); // Read the file's contents
