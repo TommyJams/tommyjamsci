@@ -2,6 +2,34 @@
 
 class Links extends Base{
 
+	public function checkSession(){
+
+		$sessionArray = $this->session->all_userdata();
+
+		if(!isset($sessionArray['session_id'])) {
+			session_start();
+		}
+		elseif(isset($sessionArray['username']))
+		{
+			$username=$sessionArray['username'];
+		}
+		elseif(isset($sessionArray['username_artist']))
+		{
+			$username=$sessionArray['username_artist'];
+		}
+		else
+		{
+			$this->sessionlogout();
+			exit;
+		}
+		return($username);
+	}
+
+	function createResponseData($response)
+    {
+        return(echo json_encode($response));
+    }
+
 	public function aboutus(){
 		$this->load->view('links/aboutus');
 	}
@@ -16,10 +44,26 @@ class Links extends Base{
 
 	public function presskit(){
 
-		error_log("message");
+		//error_log("message");
 		$this->load->helper('download');
-		$data = file_get_contents("kit/press_kit.zip"); // Read the file's contents
-		$name = 'press_kit.zip';
+
+		$username = $this->checkSession();
+
+		$q2 = "SELECT * FROM `".DATABASE."`.`members` WHERE fb_id='$username'";
+		$results = mysql_query($q2);
+		while ($a = mysql_fetch_assoc($results))
+	    {
+	    	$type=$a["type"]; $name=$a["name"]; $genre=$a["genre"]; $gender=$a["gender"];
+	    	$dob=$a["dob"]; $about=$a["about"];
+
+	    	$response = $a;
+	    }
+
+	    $data = createResponseData($response);
+		$name = 'userprofile.pdf';
+
+	/*	$data = file_get_contents("kit/press_kit.zip"); // Read the file's contents
+		$name = 'press_kit.zip';*/
 
 		//$data = 'Here is some text!';
 		//$name = 'press_kit.txt';
