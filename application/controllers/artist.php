@@ -273,10 +273,10 @@ class Artist extends Base{
 
 		error_log(1);
 
-		$response['status']=0;
-		createResponse($response);
+	//	$response['status']=0;
+	//	createResponse($response);
 
-	/*	$username = $this->checkSession();
+		$username = $this->checkSession();
 
 		$this->load->helper('functions');
 
@@ -419,7 +419,7 @@ class Artist extends Base{
 
 		$response['status']=1;
 		error_log($response['status']);
-		createResponse($response); */
+		createResponse($response); 
 	}
 
 	public function sessionlogout(){
