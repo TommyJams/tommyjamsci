@@ -183,7 +183,7 @@
     function dibAction(link)
     {
     	$("#loading-indicator").show();
-		$.post('artist/dibAction',{gigLink: link},dibActionCallback,'json');
+		$.post('artist/dibAction',{'gigLink': link},dibActionCallback,'json');
     }
 
     function uploadProfilePicCallback(a)
