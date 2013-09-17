@@ -27,7 +27,7 @@ class Links extends Base{
 
 	function createResponseData($response)
     {
-        return(echo json_encode($response));
+        return(json_encode($response));
     }
 
 	public function aboutus(){
