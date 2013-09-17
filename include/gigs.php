@@ -165,11 +165,10 @@
                             elseif($gigStatus == 7)
                             {                       
                             ?>
-                                <?php $link = (json_decode($_POST['json'])->link); ?>
-                                <h2 id='dibStatusButton'>DIBS Status: <? print ("<a href='javascript:;' onClick=confirmSubmit('$link');>DIBS</a>"); ?></h2>
-                              <!--  <form  action="" id="dibsButton" method="post">
+                                <?php $link = (json_decode($_POST['json'])->link); ?> 
+                                <form  action="" method="post">
                                     <input id="dibStatusButton" name="dib" type="submit" value="DIB" onClick="confirmSubmit('$link')">
-                                </form> -->
+                                </form> 
                             <?
                             }
                         }
