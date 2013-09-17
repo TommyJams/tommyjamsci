@@ -271,7 +271,7 @@ class Artist extends Base{
 
 	public function dibAction(){
 
-		$username = checkSession();
+		$username = $this->checkSession();
 
 		$this->load->helper('functions');
 
